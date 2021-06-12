@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/06/11 04:29:17 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/06/12 10:04:26 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ INC_DIR = include src/libft/inc
 INC = include/lst.h include/main.h src/libft/inc/libft.h
 
 SRC_DIR = src
-SRC = main.c 
+SRC = main.c sort_arr.c
 
 LST_DIR = src/lstlib
 LST_SRC = get_lst.c pop_lst.c push_lst.c
