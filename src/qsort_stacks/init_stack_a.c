@@ -6,16 +6,33 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/13 16:47:00 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/13 17:01:42 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
+int	find_max_order(t_lst *head)
+{
+	int	max;
+
+	max = head->order;
+	head = head->next;
+	while (head)
+	{
+		if (head->order > max)
+			max = head->order;
+		head = head->next;
+	}
+	return (max);
+}
+
 void	qsort_stack_loop(t_head *head)
 {
-	head->next = find_el_with_order(head->a, 1);
-	
+	head->max = find_max_order(head->a);
+	head->next = 1;
+	head->mid = head->max / 2 + head->next;
+	printf("%d - %d\n", head->max, head->mid);
 }
 
 int	find_el_with_order(t_lst *head, int order)
