@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/11 03:49:51 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/14 02:48:02 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,13 @@ void	rrb(t_head **head)
 
 void	pa(t_head **head)
 {
-	push(&(*head)->b, pop(&(*head)->a));
+	t_lst	*tmp;
+
+	tmp = (*head)->a;
+	(*head)->a = (*head)->a->next;
+	tmp->next = (*head)->b;
+	(*head)->b = tmp;
+	// push(&(*head)->b, pop(&(*head)->a));
 }
 
 void	pb(t_head **head)
