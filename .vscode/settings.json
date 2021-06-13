@@ -10,6 +10,7 @@
 		"*.tcc": "cpp",
 		"cstdbool": "cpp",
 		"cstdint": "cpp",
-		"typeinfo": "cpp"
+		"typeinfo": "cpp",
+		"main.h": "c"
 	}
 }

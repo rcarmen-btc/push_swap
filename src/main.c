@@ -6,38 +6,27 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/12 21:57:54 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/13 16:35:30 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	print_lst(t_lst *head)
+void	_print_stacks_and_arr(t_head head)
 {
-	while (head)
-	{
-		printf("%d - %d\n", head->val, head->order);
-		head = head->next;
-	}
-}
+	int	i;
 
-void	set_order(t_head head, int *arr)
-{
-	int		i;
-
+	printf("%s\n", "PRINT STACKS");
 	while (head.a)
 	{
-		i = 0;
-		while (arr[i])
-		{
-			if (head.a->val == arr[i])
-			{
-				head.a->order = i + 1;
-				break ;
-			}
-			i++;
-		}
+		printf("|%d - %d|\n", head.a->val, head.a->order);
 		head.a = head.a->next;
+	}
+	i = 0;
+	while (head.sorted_arr[i])
+	{
+		printf("(%d - %d)\n", head.sorted_arr[i], i + 1);
+		i++;
 	}
 }
 
@@ -46,58 +35,24 @@ void	init_main_struct(t_head *head)
 	head->flag = 0;
 	head->max = 0;
 	head->mid = 0;
-	head->next = 0;
-}
-
-t_lst	*find_el_with_order(t_lst *head, int order)
-{
-	while ()
-	{
-		/* code */
-	}
-	
-}
-
-void	qsort_loop(t_head *head)
-{
-	head->next = find_el_with_order(1);
-	head->mid = 
-}
-
-int	parse(int ac, char **av, t_head **head)
-{
-	int		i;
-	int		*arr;
-
-	while (ac - 1 > 0)
-	{
-		push(&(*head)->a, ft_atoi(*(av + (ac - 1))));
-		ac--;
-	}
-	arr = get_sort_arr((*head)->a);
-	set_order(**head, arr);
-	print_lst((*head)->a);
-	printf("\n");
-	i = 0;
-	while (arr[i])
-	{
-		printf("%d - %d\n", arr[i], i + 1);
-		i++;
-	}
-	init_main_struct(*head);
-	printf("%d\n", (*head)->flag);
-	qsort_loop();
+	head->next = NULL;
 }
 
 int	main(int ac, char **av)
 {
-	t_head	*head;
+	t_head	head;
 
-	head->a = NULL;
-	head->b = NULL;
+	head.a = NULL;
+	head.b = NULL;
 	if (ac < 3)
-		write(2, "Error\n", 5);
-	else if (ac >= 3)
-		return (parse(ac, av, &head));
-	return (1);
+		return (write(2, "Error\n", 6) - 5);
+	parse(ac, av, &head);
+	_print_stacks_and_arr(head);
+	get_sorted_arr(&head);
+	_print_stacks_and_arr(head);
+	set_order(head);
+	_print_stacks_and_arr(head);
+	init_main_struct(&head);
+	qsort_stack_loop(&head);
+	return (0);
 }

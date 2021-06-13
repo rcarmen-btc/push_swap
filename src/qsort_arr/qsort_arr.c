@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_arr.c                                         :+:      :+:    :+:   */
+/*   qsort_arr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/12 14:29:17 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/13 16:28:43 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,21 @@ void	*qsort_arr(int **arr, int first, int last)
 	}
 }
 
-int	*get_sort_arr(t_lst *head)
+void	get_sorted_arr(t_head *head)
 {
 	size_t	lstlen;
-	int		*arr;
 	size_t	i;
+	t_lst	*tmp_lst_head;
 
+	tmp_lst_head = head->a;
+	lstlen = get_lst_len(tmp_lst_head);
 	i = 0;
-	lstlen = get_lst_len(head);
-	arr = (int *)ft_calloc(sizeof(int), (lstlen + 1));
-	while (head)
+	head->sorted_arr = (int *)ft_calloc(sizeof(int), (lstlen + 1));
+	while (tmp_lst_head)
 	{
-		arr[i] = head->val;
-		head = head->next;
+		head->sorted_arr[i] = tmp_lst_head->val;
+		tmp_lst_head = tmp_lst_head->next;
 		i++;
 	}
-	qsort_arr(&arr, 0, i - 1);
-	return (arr);
+	qsort_arr(&head->sorted_arr, 0, i - 1);
 }

@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/11 11:56:09 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/13 16:23:45 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,7 @@ typedef struct s_lst
 	int				order;
 	int				flag;
 	struct s_lst	*next;
-	struct s_lst	*prev;
 }					t_lst;
-
-typedef struct s_dlst
-{
-	size_t	size;
-	t_lst	*head;
-	t_lst	*tail;
-}				t_dlst;
 
 void	push(t_lst **head, int val);
 int		pop(t_lst **head);

@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/12 19:54:25 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/13 16:47:31 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_head
 	int			mid;
 	int			flag;
 	int			max;
+	int			*sorted_arr;
 }				t_head;
 
 /*
@@ -44,8 +45,20 @@ void	pb(t_head **head);
 /*
  * 
  */
-int		*get_sort_arr(t_lst *head);
+void	parse(int ac, char **av, t_head *head);
+void	get_sorted_arr(t_head *head);
 void	*qsort_arr(int **arr, int first, int last);
 void	*qsort_iter(int **arr, int middle, int *left, int *right);
 
+/*
+ * 
+ */
+void	qsort_stack_loop(t_head *head);
+int		find_el_with_order(t_lst *head, int order);
+void	set_order(t_head head);
+
+/*
+ * 
+ */
+void	_print_stacks_and_arr(t_head head);
 #endif
