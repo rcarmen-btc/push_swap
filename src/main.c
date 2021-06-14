@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/14 03:07:40 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/14 21:08:22 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ void	_print_stacks_and_arr(t_head head)
 	int	i;
 
 	printf("%s\n", "PRINT A");
+	printf("|%-7s|%-7s|%-7s|\n", "val:", "order:", "flag:");
+	printf("-------------------------\n");
 	while (head.a)
 	{
-		printf("|%d - %d|\n", head.a->val, head.a->order);
+		printf("|%-7d|%-7d|%-7d|\n", head.a->val, head.a->order, head.a->flag);
 		head.a = head.a->next;
 	}
 	printf("\n");
 	printf("%s\n", "PRINT B");
+	printf("|%-7s|%-7s|%-7s|\n", "val:", "order:", "flag:");
+	printf("-------------------------\n");
 	while (head.b)
 	{
-		printf("|%d - %d|\n", head.b->val, head.b->order);
+		printf("|%-7d|%-7d|%-7d|\n", head.b->val, head.b->order, head.b->flag);
 		head.b = head.b->next;
 	}
 	printf("\n");
-	// i = 0;
-	// while (head.sorted_arr[i])
-	// {
-		// printf("(%d - %d)\n", head.sorted_arr[i], i + 1);
-		// i++;
-	// }
+	printf("======================================\n");
+	printf("\n");
 }
 
 void	init_main_struct(t_head *head)
@@ -65,7 +65,7 @@ int	main(int ac, char **av)
 	get_sorted_arr(&head);
 	set_order(head);
 	init_main_struct(&head);
-	qsort_stack_loop(&head);
 	_print_stacks_and_arr(head);
+	qsort_stack_loop(&head);
 	return (0);
 }
