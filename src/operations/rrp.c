@@ -6,11 +6,31 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/14 02:48:02 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/14 03:02:38 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+void	pa(t_head **head)
+{
+	t_lst	*tmp;
+
+	tmp = (*head)->b;
+	(*head)->b = (*head)->b->next;
+	tmp->next = (*head)->a;
+	(*head)->a = tmp;
+}
+
+void	pb(t_head **head)
+{
+	t_lst	*tmp;
+
+	tmp = (*head)->a;
+	(*head)->a = (*head)->a->next;
+	tmp->next = (*head)->b;
+	(*head)->b = tmp;
+}
 
 void	rra(t_head **head)
 {
@@ -30,20 +50,4 @@ void	rrb(t_head **head)
 	get_last((*head)->b)->next = (*head)->b;
 	(*head)->b = tmp->next;
 	tmp->next = NULL;
-}
-
-void	pa(t_head **head)
-{
-	t_lst	*tmp;
-
-	tmp = (*head)->a;
-	(*head)->a = (*head)->a->next;
-	tmp->next = (*head)->b;
-	(*head)->b = tmp;
-	// push(&(*head)->b, pop(&(*head)->a));
-}
-
-void	pb(t_head **head)
-{
-	push(&(*head)->a, pop(&(*head)->b));
 }

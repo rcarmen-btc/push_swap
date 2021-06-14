@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/13 16:47:31 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/14 03:06:22 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ typedef struct s_head
  * 
  */
 void	sa(t_head **head);
-void	print_lst(t_lst *head);
+void	sb(t_head **head);
 void	ra(t_head **head);
-void	rra(t_head **head);
-void	rrb(t_head **head);
+void	rb(t_head **head);
 void	pa(t_head **head);
 void	pb(t_head **head);
+void	rra(t_head **head);
+void	rrb(t_head **head);
 
 /*
  * 
