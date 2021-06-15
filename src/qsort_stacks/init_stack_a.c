@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/15 03:38:14 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/15 07:40:01 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,19 @@ void	qsort_stack_loop(t_head *head)
 	// {
 	// 	ra(&tmphead);
 	// }
+	head->flag++;
+	tmphead->max = tmphead->mid;
+	tmphead->mid = (tmphead->max - tmphead->next) / 2 + tmphead->next;
+	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
+	i = 0;
+	while (i < head->max)
+	{
+		if (tmphead->a->order <= head->mid)
+			pb(&tmphead);
+		else
+			ra(&tmphead);
+		i++;
+	}
 	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
 	_print_stacks_and_arr(*head);
 }
