@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/16 00:32:50 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/16 00:49:29 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,6 +301,16 @@ void	qsort_stack_loop(t_head *head)
 		}
 		_print_stacks_and_arr(*head);
 	}
+	while (head->a->order != 1)
+	{
+		head->max = get_max_order(head->a);
+		head->mid = (head->max - head->next) / 2 + head->next;
+		if (head->a->order <= head->mid)
+			pb(&head);
+		else
+			ra(&head);
+	}
+	_print_stacks_and_arr(*head);
 }
 
 int	find_el_with_order(t_lst *head, int order)
