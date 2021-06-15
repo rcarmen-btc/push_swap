@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/16 00:30:01 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/16 00:32:50 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,10 +301,6 @@ void	qsort_stack_loop(t_head *head)
 		}
 		_print_stacks_and_arr(*head);
 	}
-	head->max = get_max_order(head->b);
-	head->mid = (head->max - head->next) / 2 + head->next;
-	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
-	_print_stacks_and_arr(*head);
 }
 
 int	find_el_with_order(t_lst *head, int order)
