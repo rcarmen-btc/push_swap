@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/15 02:28:29 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/15 03:38:14 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	qsort_stack_loop(t_head *head)
 	head->flag++;
 	i = 0;
 	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
-	while (i < head->max)
+	while (head->b)
 	{
 		_print_stacks_and_arr(*head);
 		if (tmphead->b->order >= head->mid)
@@ -61,6 +61,7 @@ void	qsort_stack_loop(t_head *head)
 			tmphead->b->flag = head->flag;
 			if (tmphead->b->order == tmphead->next)
 			{
+				tmphead->b->flag = head->flag;
 				pa(&tmphead);
 				ra(&tmphead);
 				tmphead->next++;
@@ -100,6 +101,7 @@ void	qsort_stack_loop(t_head *head)
 			tmphead->b->flag = head->flag;
 			if (tmphead->b->order == tmphead->next)
 			{
+				tmphead->b->flag = head->flag;
 				pa(&tmphead);
 				ra(&tmphead);
 				tmphead->next++;
@@ -121,23 +123,19 @@ void	qsort_stack_loop(t_head *head)
 		}
 		i++;
 	}
-	// while (tmphead->a)
-	// {
-	// 	/* code */
-	// }
 	head->flag++;
 	tmphead->max = find_max_order(tmphead->a);
 	tmphead->mid = (tmphead->max - tmphead->next) / 2 + tmphead->next;
 	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
 	i = 0;
-	while (tmphead->a->order != 1)
-	{
-		if (tmphead->a->order <= head->mid)
-			pb(&tmphead);
-		else
-			ra(&tmphead);
-		i++;
-	}
+	// while (tmphead->a->order != 1)
+	// {
+	// 	if (tmphead->a->order <= head->mid)
+	// 		pb(&tmphead);
+	// 	else
+	// 		ra(&tmphead);
+	// 	i++;
+	// }
 	while (tmphead->a->order < tmphead->next)
 	{
 		if (tmphead->b->order != tmphead->next)
@@ -148,7 +146,7 @@ void	qsort_stack_loop(t_head *head)
 		else
 			ra(&tmphead);
 	}
-	_print_stacks_and_arr(*head);
+	// _print_stacks_and_arr(*head);
 	while (tmphead->b)
 	{
 		_print_stacks_and_arr(*head);
@@ -178,11 +176,11 @@ void	qsort_stack_loop(t_head *head)
 		}
 		i++;
 	}
+	// while (tmphead->a->order != 1)
+	// {
+	// 	ra(&tmphead);
+	// }
 	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
-	while (tmphead->a->order != 1)
-	{
-		ra(&tmphead);
-	}
 	_print_stacks_and_arr(*head);
 }
 
