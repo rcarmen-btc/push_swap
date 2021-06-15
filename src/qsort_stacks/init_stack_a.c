@@ -6,13 +6,13 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/15 07:40:01 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/16 00:30:01 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int	find_max_order(t_lst *head)
+int	get_max_order(t_lst *head)
 {
 	int	max;
 
@@ -27,172 +27,282 @@ int	find_max_order(t_lst *head)
 	return (max);
 }
 
-void	qsort_stack_loop(t_head *head)
+// void	first_phase(t_head *head)
+// {
+// 	int		i;
+
+// 	head->max = find_max_order(head->a);
+// 	head->mid = (head->max - head->next) / 2 + head->next;
+// 	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
+// 	i = 0;
+// 	while (i < head->max)
+// 	{
+// 		if (head->a->order <= head->mid)
+// 			pb(&head);
+// 		else
+// 			ra(&head);
+// 		i++;
+// 	}
+// 	_print_stacks_and_arr(*head);
+// 	head->max = find_max_order(head->b);
+// 	head->mid = (head->max - head->next) / 2 + head->next;
+// 	head->flag++;
+// 	i = 0;
+// 	while (head->b)
+// 	{
+// 		printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
+// 		_print_stacks_and_arr(*head);
+// 		if (head->b->order >= head->mid)
+// 		{
+// 			head->b->flag = head->flag;
+// 			if (head->b->order == head->next)
+// 			{
+// 				head->b->flag = head->flag;
+// 				pa(&head);
+// 				ra(&head);
+// 				head->next++;
+// 			}
+// 			else
+// 				pa(&head);
+// 		}
+// 		else
+// 		{
+// 			if (head->b->order == head->next)
+// 			{
+// 				head->b->flag = head->flag;
+// 				pa(&head);
+// 				ra(&head);
+// 				head->next++;
+// 			}
+// 			else
+// 				rb(&head);
+// 		}
+// 		i++;
+// 	}
+// 	while (head->a->order == head->next)
+// 	{
+// 		ra(&head);
+// 		head->next++;
+// 		printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
+// 		printf("-----dkfjalkd-------\n");
+// 		_print_stacks_and_arr(*head);
+// 	}
+// }
+
+// void	second_phase(t_head *head)
+// {
+// 	while (head->a->flag != 0)
+// 	{
+// 		pb(&head);
+// 	}
+// 	head->flag++;
+// 	head->max = find_max_order(head->b);
+// 	head->mid = (head->max - head->next) / 2 + head->next;
+// 	while (head->b && head->next <= head->max)
+// 	{
+// 		printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
+// 		printf("-----12456-------\n");
+// 		_print_stacks_and_arr(*head);
+// 		if (head->b->order >= head->mid)
+// 		{
+// 			head->b->flag = head->flag;
+// 			if (head->b->order == head->next)
+// 			{
+// 				head->b->flag = head->flag;
+// 				pa(&head);
+// 				ra(&head);
+// 				head->next++;
+// 			}
+// 			else
+// 				pa(&head);
+// 		}
+// 		else
+// 		{
+// 			if (head->b->order == head->next)
+// 			{
+// 				head->b->flag = head->flag;
+// 				pa(&head);
+// 				ra(&head);
+// 				head->next++;
+// 			}
+// 			else
+// 				rb(&head);
+// 		}
+// 	}
+// 	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
+// 	while (head->a->order == head->next && head->next <= head->max)
+// 	{
+// 		ra(&head);
+// 		head->next++;
+// 		printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
+// 		printf("-----dkfjalkd-------\n");
+// 		_print_stacks_and_arr(*head);
+// 	}
+// }
+
+// void	qsort_stack_loop(t_head *head)
+// {
+// 	int		i;
+
+// 	head->next = 1;
+// 	head->flag = 0;
+// 	first_phase(head);
+// 	//check stack	
+// 	// second_phase(head);
+// 	// second_phase(head);
+// 	// first_phase(head);
+// 	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
+// 	_print_stacks_and_arr(*head);
+// }
+
+int	checking_for_sorting(t_head *head)
 {
-	t_head	*tmphead;
+	t_lst	*tmp;
 	int		i;
 
-	head->max = find_max_order(head->a);
-	head->next = 1;
-	head->mid = head->max / 2 + head->next;
-	head->flag = 0;
-	tmphead = head;
-	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
+	tmp = head->a;
 	i = 0;
-	while (i < head->max)
+	while (tmp)
 	{
-		if (tmphead->a->order <= head->mid)
-			pb(&tmphead);
+		if (tmp->val == head->sorted_arr[i])
+		{
+			tmp = tmp->next;
+			i++;
+		}
 		else
-			ra(&tmphead);
-		i++;
+			return (0);
+	}
+	return (1);
+}
+
+int	exists_smaller_or_eq_mid_a(t_head *head)
+{
+	t_lst	*tmp;
+
+	tmp = head->a;
+	while (tmp)
+	{
+		if (tmp->order <= head->mid)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+int	exists_grater_or_eq_mid_b(t_head *head)
+{
+	t_lst	*tmp;
+
+	tmp = head->b;
+	while (tmp)
+	{
+		if (tmp->order >= head->mid || tmp->order == head->next)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+void	qsort_stack_loop(t_head *head)
+{
+	int	save;
+
+	if (checking_for_sorting(head))
+		printf("HAHAHAHA\n");
+	head->flag = 0;
+	head->next = 1;
+	head->max = get_max_order(head->a);
+	head->mid = (head->max - head->next) / 2 + head->next;
+	while (exists_smaller_or_eq_mid_a(head))
+	{
+		if (head->a->order <= head->mid)
+			pb(&head);
+		else
+			ra(&head);
 	}
 	_print_stacks_and_arr(*head);
-	head->max = head->mid;
+	head->max = get_max_order(head->b);
 	head->mid = (head->max - head->next) / 2 + head->next;
-	head->flag++;
-	i = 0;
-	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
-	while (head->b)
+	while (exists_grater_or_eq_mid_b(head))
 	{
+		printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
 		_print_stacks_and_arr(*head);
-		if (tmphead->b->order >= head->mid)
+		head->max = get_max_order(head->b);
+		head->mid = (head->max - head->next) / 2 + head->next;
+		if (head->b->order >= head->mid)
 		{
-			tmphead->b->flag = head->flag;
-			if (tmphead->b->order == tmphead->next)
+			if (head->b->order == head->next)
 			{
-				tmphead->b->flag = head->flag;
-				pa(&tmphead);
-				ra(&tmphead);
-				tmphead->next++;
+				head->b->flag++;
+				head->next++;
+				pa(&head);
+				ra(&head);
 			}
 			else
-				pa(&tmphead);
-		}
+			{
+				head->b->flag++;
+				pa(&head);
+			}
+		}	
 		else
 		{
-			if (tmphead->b->order == tmphead->next)
+			if (head->b->order == head->next)
 			{
-				tmphead->b->flag = head->flag;
-				pa(&tmphead);
-				ra(&tmphead);
-				tmphead->next++;
+				head->b->flag++;
+				head->next++;
+				pa(&head);
+				ra(&head);
 			}
 			else
-				rb(&tmphead);
+				rb(&head);
 		}
-		i++;
 	}
-	i = 0;
-	while (tmphead->a->flag != 0)
+	while (head->a->flag != 0)
 	{
-		pb(&tmphead);
-	}
-	i = 0;
-	head->flag++;
-	tmphead->max = find_max_order(tmphead->b);
-	tmphead->mid = (tmphead->max - tmphead->next) / 2 + tmphead->next;
-	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
-	while (tmphead->b)
-	{
+		save = head->a->flag;
+		printf("%d\n", save);
+		while (head->a->flag == save)
+			pb(&head);
+		head->max = get_max_order(head->b);
+		head->mid = (head->max - head->next) / 2 + head->next;
+		while (exists_grater_or_eq_mid_b(head))
+		{
+			printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
+			_print_stacks_and_arr(*head);
+			head->max = get_max_order(head->b);
+			head->mid = (head->max - head->next) / 2 + head->next;
+			if (head->b->order >= head->mid)
+			{
+				if (head->b->order == head->next)
+				{
+					head->b->flag++;
+					head->next++;
+					pa(&head);
+					ra(&head);
+				}
+				else
+				{
+					head->b->flag++;
+					pa(&head);
+				}
+			}	
+			else
+			{
+				if (head->b->order == head->next)
+				{
+					head->b->flag++;
+					head->next++;
+					pa(&head);
+					ra(&head);
+				}
+				else
+					rb(&head);
+			}
+		}
 		_print_stacks_and_arr(*head);
-		if (tmphead->b->order >= head->mid)
-		{
-			tmphead->b->flag = head->flag;
-			if (tmphead->b->order == tmphead->next)
-			{
-				tmphead->b->flag = head->flag;
-				pa(&tmphead);
-				ra(&tmphead);
-				tmphead->next++;
-			}
-			else
-				pa(&tmphead);
-		}
-		else
-		{
-			if (tmphead->b->order == tmphead->next)
-			{
-				tmphead->b->flag = head->flag;
-				pa(&tmphead);
-				ra(&tmphead);
-				tmphead->next++;
-			}
-			else
-				rb(&tmphead);
-		}
-		i++;
 	}
-	head->flag++;
-	tmphead->max = find_max_order(tmphead->a);
-	tmphead->mid = (tmphead->max - tmphead->next) / 2 + tmphead->next;
-	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
-	i = 0;
-	// while (tmphead->a->order != 1)
-	// {
-	// 	if (tmphead->a->order <= head->mid)
-	// 		pb(&tmphead);
-	// 	else
-	// 		ra(&tmphead);
-	// 	i++;
-	// }
-	while (tmphead->a->order < tmphead->next)
-	{
-		if (tmphead->b->order != tmphead->next)
-		{
-			ra(&tmphead);
-			rb(&tmphead);
-		}
-		else
-			ra(&tmphead);
-	}
-	// _print_stacks_and_arr(*head);
-	while (tmphead->b)
-	{
-		_print_stacks_and_arr(*head);
-		if (tmphead->b->order >= head->mid)
-		{
-			tmphead->b->flag = head->flag;
-			if (tmphead->b->order == tmphead->next)
-			{
-				pa(&tmphead);
-				ra(&tmphead);
-				tmphead->next++;
-			}
-			else
-				pa(&tmphead);
-		}
-		else
-		{
-			if (tmphead->b->order == tmphead->next)
-			{
-				tmphead->b->flag = head->flag;
-				pa(&tmphead);
-				ra(&tmphead);
-				tmphead->next++;
-			}
-			else
-				rb(&tmphead);
-		}
-		i++;
-	}
-	// while (tmphead->a->order != 1)
-	// {
-	// 	ra(&tmphead);
-	// }
-	head->flag++;
-	tmphead->max = tmphead->mid;
-	tmphead->mid = (tmphead->max - tmphead->next) / 2 + tmphead->next;
-	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
-	i = 0;
-	while (i < head->max)
-	{
-		if (tmphead->a->order <= head->mid)
-			pb(&tmphead);
-		else
-			ra(&tmphead);
-		i++;
-	}
+	head->max = get_max_order(head->b);
+	head->mid = (head->max - head->next) / 2 + head->next;
 	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
 	_print_stacks_and_arr(*head);
 }
@@ -233,6 +343,7 @@ void	parse(int ac, char **av, t_head *head)
 	while (ac - 1 > 0)
 	{
 		push(&head->a, ft_atoi(*(av + (ac - 1))));
+		head->a->flag = 0;
 		ac--;
 	}
 }
