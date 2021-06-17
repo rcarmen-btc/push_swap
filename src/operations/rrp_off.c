@@ -1,57 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sr.c                                               :+:      :+:    :+:   */
+/*   rrp_off.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/17 03:06:04 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/17 05:21:54 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	sa(t_head **head)
+void	pa_off(t_head **head)
 {
 	t_lst	*tmp;
 
-	(*head)->comand_counter++;
-	tmp = (*head)->a->next;
-	(*head)->a->next = tmp->next;
+	tmp = (*head)->b;
+	(*head)->b = (*head)->b->next;
 	tmp->next = (*head)->a;
 	(*head)->a = tmp;
 }
 
-void	sb(t_head **head)
+void	pb_off(t_head **head)
 {
 	t_lst	*tmp;
 
-	(*head)->comand_counter++;
-	tmp = (*head)->b->next;
-	(*head)->b->next = tmp->next;
+	tmp = (*head)->a;
+	(*head)->a = (*head)->a->next;
 	tmp->next = (*head)->b;
 	(*head)->b = tmp;
 }
 
-void	ra(t_head **head)
+void	rra_off(t_head **head)
 {
-	t_lst	*tmp;
+	t_lst	*tmp;	
 
-	(*head)->comand_counter++;
-	tmp = (*head)->a->next;
+	tmp = get_sec_to_last((*head)->a);
 	get_last((*head)->a)->next = (*head)->a;
-	(*head)->a->next = NULL;
-	(*head)->a = tmp;
+	(*head)->a = tmp->next;
+	tmp->next = NULL;
 }
 
-void	rb(t_head **head)
+void	rrb_off(t_head **head)
 {
-	t_lst	*tmp;
+	t_lst	*tmp;	
 
-	(*head)->comand_counter++;
-	tmp = (*head)->b->next;
+	tmp = get_sec_to_last((*head)->b);
 	get_last((*head)->b)->next = (*head)->b;
-	(*head)->b->next = NULL;
-	(*head)->b = tmp;
+	(*head)->b = tmp->next;
+	tmp->next = NULL;
 }

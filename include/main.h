@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/14 03:06:22 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/17 05:22:45 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_head
 	int			flag;
 	int			max;
 	int			*sorted_arr;
+	int			comand_counter;
 }				t_head;
 
 /*
@@ -43,6 +44,14 @@ void	pb(t_head **head);
 void	rra(t_head **head);
 void	rrb(t_head **head);
 
+void	sa_off(t_head **head);
+void	sb_off(t_head **head);
+void	ra_off(t_head **head);
+void	rb_off(t_head **head);
+void	pa_off(t_head **head);
+void	pb_off(t_head **head);
+void	rra_off(t_head **head);
+void	rrb_off(t_head **head);
 /*
  * 
  */

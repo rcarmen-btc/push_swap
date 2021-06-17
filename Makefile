@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/06/14 04:15:18 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/06/17 05:40:29 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC_DIR = src
 LST_SRC = get_lst.c pop_lst.c push_lst.c
 LST_SRC_DIR = src/lstlib
 
-OPER_SRC = sr.c rrp.c
+OPER_SRC = sr.c rrp.c sr_off.c rrp_off.c
 OPER_SRC_DIR = src/operations
 
 QSORT_ARR_SRC = qsort_arr.c

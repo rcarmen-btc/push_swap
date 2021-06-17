@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/16 16:36:08 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/17 05:38:55 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(int ac, char **av)
 	head = (t_head *)malloc(sizeof(t_head));
 	head->a = NULL;
 	head->b = NULL;
+	head->comand_counter = 0;
 	if (ac < 3)
 		return (write(2, "Error\n", 6) - 5);
 	parse(ac, av, head);
@@ -75,5 +76,6 @@ int	main(int ac, char **av)
 	printf("=====================================\n");
 	printf("=====================================\n");
 	qsort_stack_loop(head);
+	printf("<%d>\n", head->comand_counter);
 	return (0);
 }
