@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/17 05:38:55 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/18 22:54:56 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	init_main_struct(t_head *head)
 
 void	test(t_head *head)
 {
-	_print_stacks_and_arr(*head);
+	// _print_stacks_and_arr(*head);
 	ra(&head);
-	_print_stacks_and_arr(*head);
+	// _print_stacks_and_arr(*head);
 }
 
 int	main(int ac, char **av)
@@ -67,14 +67,10 @@ int	main(int ac, char **av)
 	get_sorted_arr(head);
 	set_order(*head);
 	init_main_struct(head);
-	_print_stacks_and_arr(*head);
-	printf("=====================================\n");
-	printf("=====================================\n");
-	printf("=====================================\n");
-	printf("=====================================\n");
-	printf("=====================================\n");
-	printf("=====================================\n");
-	printf("=====================================\n");
+	// _print_stacks_and_arr(*head);
+	// printf("=====================================\n");
+	// printf("=====================================\n");
+	// printf("=====================================\n");
 	qsort_stack_loop(head);
 	printf("<%d>\n", head->comand_counter);
 	return (0);

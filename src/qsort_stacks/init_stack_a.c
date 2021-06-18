@@ -6,15 +6,15 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/18 08:13:17 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/19 01:01:24 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int get_max_order(t_lst *head)
+int	get_max_order(t_lst *head)
 {
-	int max;
+	int	max;
 
 	max = head->order;
 	head = head->next;
@@ -27,10 +27,10 @@ int get_max_order(t_lst *head)
 	return (max);
 }
 
-int checking_for_sorting_a(t_head *head)
+int	checking_for_sorting_a(t_head *head)
 {
-	t_lst *tmp;
-	int i;
+	t_lst	*tmp;
+	int		i;
 
 	tmp = head->a;
 	i = 0;
@@ -47,22 +47,21 @@ int checking_for_sorting_a(t_head *head)
 	return (1);
 }
 
-int checking_for_sorting_b(t_head *head)
+int	checking_for_sorting_b(t_head *head)
 {
-	t_lst *tmp;
-	int len;
-	int	pre;
-	int	i;
+	t_lst	*tmp;
+	int		len;
+	int		pre;
+	int		i;
 
 	pre = head->b->order;
 	tmp = head->b->next;
 	len = get_lst_len(head->b);
-	// exit(1);	
 	i = 0;
 	while (tmp != NULL)
 	{
 		if (tmp->order < pre)
-			return 0;
+			return (0);
 		pre = tmp->order;
 		tmp = tmp->next;
 		i++;
@@ -70,9 +69,9 @@ int checking_for_sorting_b(t_head *head)
 	return (1);
 }
 
-int exists_smaller_or_eq_mid_a(t_head *head)
+int	exists_smaller_or_eq_mid_a(t_head *head)
 {
-	t_lst *tmp;
+	t_lst	*tmp;
 
 	tmp = head->a;
 	while (tmp)
@@ -84,9 +83,9 @@ int exists_smaller_or_eq_mid_a(t_head *head)
 	return (0);
 }
 
-int exists_grater_or_eq_mid_b(t_head *head)
+int	exists_grater_or_eq_mid_b(t_head *head)
 {
-	t_lst *tmp;
+	t_lst	*tmp;
 
 	tmp = head->b;
 	while (tmp)
@@ -100,13 +99,11 @@ int exists_grater_or_eq_mid_b(t_head *head)
 
 void	sort_three_el(t_head *head)
 {
-	printf("++++++++++++30295023940==========\n");
 	if (checking_for_sorting_b(head))
 		return ;
 	sb_off(&head);
 	if (checking_for_sorting_b(head))
 	{
-		printf("++++++++++++30295023940==========\n");
 		sb_off(&head);
 		sb(&head);
 		return ;
@@ -161,37 +158,23 @@ void	sort_three_el(t_head *head)
 	}
 	else
 		rb_off(&head);
-}	
+}
 
-void first_phase_a_small_half_to_b(t_head *head)
+void	first_phase_a_small_half_to_b(t_head *head)
 {
 	head->max = get_max_order(head->a);
 	head->mid = (head->max - head->next) / 2 + head->next;
-	printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
-	printf("HELLO--, %d\n", head->a->order);
-	_print_stacks_and_arr(*head);
 	while (head->a->flag == 0 && exists_smaller_or_eq_mid_a(head))
 	{
-		printf("max: %d next: %d mid: %d\n", head->max, head->next, head->mid);
-		printf("--HELLO, %d\n", head->a->order);
 		_print_stacks_and_arr(*head);
 		if (head->a->order <= head->mid)
 			pb(&head);
 		else
-			ra(&head);	
+			ra(&head);
 	}
-	// while (get_last(head->a)->flag == 0)
-	// {
-	// 	rra(&head);
-	// }
-	printf("HELLO, %d\n", head->a->order);
-	_print_stacks_and_arr(*head);
-	// exit(1);
-
 	while (head->a->flag != 0 && head->a->order == head->next)
 	{
-		// printf("HELLO, %d\n", head->a->order);
-		// _print_stacks_and_arr(*head);
+		_print_stacks_and_arr(*head);
 		while (head->a->order == head->next)
 		{
 			ra(&head);
@@ -199,10 +182,10 @@ void first_phase_a_small_half_to_b(t_head *head)
 		}
 		if (head->a->flag != 0)
 			ra(&head);
-		// head->next++;
 	}
 	while (head->a->order == head->next)
 	{
+		_print_stacks_and_arr(*head);
 		ra(&head);
 		head->next++;
 	}
@@ -210,7 +193,7 @@ void first_phase_a_small_half_to_b(t_head *head)
 
 int	check_zero_or_greater_cycle(t_head *head)
 {
-	t_lst *tmp;
+	t_lst	*tmp;
 
 	tmp = head->a;
 	while (tmp)
@@ -220,7 +203,6 @@ int	check_zero_or_greater_cycle(t_head *head)
 		tmp = tmp->next;
 	}
 	return (0);
-	
 }
 
 int	check_zeros_in_the_end(t_head  *head)
@@ -240,26 +222,27 @@ int	check_zeros_in_the_end(t_head  *head)
 	return (0);
 }
 
-void second_phase_b_greatest_half_to_a(t_head *head)
+void	second_phase_b_greatest_half_to_a(t_head *head)
 {
 	int	zero_order;
 
 	if (get_lst_len(head->b) > 3)
 	{
+		_print_stacks_and_arr(*head);
 		zero_order = check_zeros_in_the_end(head);
 		if (check_zero_or_greater_cycle(head) && zero_order)
 		{
 			while (head->a->order != zero_order)
 			{
 				rra(&head);
+				if (head->b->order != head->next)
+					rrb(&head);
 			}
 		}
 		head->max = get_max_order(head->b);
 		head->mid = (head->max - head->next) / 2 + head->next;
-		printf("max: %d next: %d mid: %d===============\n", head->max, head->next, head->mid);
 		while (exists_grater_or_eq_mid_b(head))
 		{
-			printf("max: %d next: %d mid: %d++++++++++++\n", head->max, head->next, head->mid);
 			_print_stacks_and_arr(*head);
 			head->max = get_max_order(head->b);
 			head->mid = (head->max - head->next) / 2 + head->next;
@@ -310,7 +293,7 @@ void second_phase_b_greatest_half_to_a(t_head *head)
 				rra(&head);
 			}
 		}
-		sort_three_el(head);	
+		sort_three_el(head);
 		while (head->b != NULL && head->b->order == head->next)
 		{
 			head->b->flag++;
@@ -335,28 +318,20 @@ void second_phase_b_greatest_half_to_a(t_head *head)
 	}
 	while (head->a->order == head->next)
 	{
-		// head->a->flag++;
 		head->next++;
 		ra(&head);
 	}
-	// while (head->a->flag != 0)
-	// {
-	// 	ra(&head);
-	// 	head->next++;
-	// }
 }
 
-void third_phase_a_ones_to_b_and_back(t_head *head)
+void	third_phase_a_ones_to_b_and_back(t_head *head)
 {
-	int save;
+	int	save;
 
 	while (!checking_for_sorting_a(head) && head->a->flag != 0)
 	{
-		_print_stacks_and_arr(*head);
 		save = head->a->flag;
 		while (head->a->flag == save)
 		{
-			printf("heeeee====\n");
 			if (head->a->order == head->next)
 			{
 				head->a->flag++;
@@ -373,26 +348,23 @@ void third_phase_a_ones_to_b_and_back(t_head *head)
 			head->next++;
 			ra(&head);
 		}
-		printf("max: %d next: %d mid: %d===============\n", head->max, head->next, head->mid);
-		printf("+++++heeeee====\n");
-		_print_stacks_and_arr(*head);
 	}
 }
 
-void qsort_stack_loop(t_head *head)
+void	qsort_stack_loop(t_head *head)
 {
+	int	save;
+
 	head->next = 1;
 	head->flag = 0;
 	while (!checking_for_sorting_a(head))
 	{
-		int save;
-
 		if (checking_for_sorting_a(head))
 		{
 			printf("===============+END+==============\n");
 			printf("===============+ZERO+==============\n");
 			printf("===============+END+==============\n");
-			return;
+			return ;
 		}
 		first_phase_a_small_half_to_b(head);
 		_print_stacks_and_arr(*head);
@@ -401,7 +373,7 @@ void qsort_stack_loop(t_head *head)
 			printf("===============+END+==============\n");
 			printf("===============+FIRST+==============\n");
 			printf("===============+END+==============\n");
-			return;
+			return ;
 		}
 		second_phase_b_greatest_half_to_a(head);
 		_print_stacks_and_arr(*head);
@@ -410,7 +382,7 @@ void qsort_stack_loop(t_head *head)
 			printf("===============+END+==============\n");
 			printf("===============+SECOND+==============\n");
 			printf("===============+END+==============\n");
-			return;
+			return ;
 		}
 		if (head->a->flag != 0)
 		{
@@ -423,11 +395,8 @@ void qsort_stack_loop(t_head *head)
 					pa(&head);
 					ra(&head);
 				}
-				// printf("ddfd\n");
-				printf("max: %d next: %d mid: %d===============\n", head->max, head->next, head->mid);
-				_print_stacks_and_arr(*head);
+				// _print_stacks_and_arr(*head);
 				third_phase_a_ones_to_b_and_back(head);
-				// exit(1);
 			}
 			_print_stacks_and_arr(*head);
 			if (checking_for_sorting_a(head))
@@ -435,13 +404,13 @@ void qsort_stack_loop(t_head *head)
 				printf("===============+END+==============\n");
 				printf("===============+SECOND+==============\n");
 				printf("===============+END+==============\n");
-				return;
+				return ;
 			}
 		}
 	}
 }
 
-int find_el_with_order(t_lst *head, int order)
+int	find_el_with_order(t_lst *head, int order)
 {
 	while (head)
 	{
@@ -452,19 +421,21 @@ int find_el_with_order(t_lst *head, int order)
 	return (-1);
 }
 
-void set_order(t_head head)
+void	set_order(t_head head)
 {
-	int i;
+	int	i;
+	int	len;
 
+	len = get_lst_len(head.a);	
 	while (head.a)
 	{
 		i = 0;
-		while (head.sorted_arr[i])
+		while (i < len)
 		{
 			if (head.a->val == head.sorted_arr[i])
 			{
 				head.a->order = i + 1;
-				break;
+				break ;
 			}
 			i++;
 		}
@@ -472,7 +443,7 @@ void set_order(t_head head)
 	}
 }
 
-void parse(int ac, char **av, t_head *head)
+void	parse(int ac, char **av, t_head *head)
 {
 	while (ac - 1 > 0)
 	{
