@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/18 22:54:56 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/20 00:56:06 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int ac, char **av)
 	head = (t_head *)malloc(sizeof(t_head));
 	head->a = NULL;
 	head->b = NULL;
-	head->comand_counter = 0;
+	head->commands = NULL;
 	if (ac < 3)
 		return (write(2, "Error\n", 6) - 5);
 	parse(ac, av, head);
@@ -72,6 +72,43 @@ int	main(int ac, char **av)
 	// printf("=====================================\n");
 	// printf("=====================================\n");
 	qsort_stack_loop(head);
-	printf("<%d>\n", head->comand_counter);
+	optimize_command_count(head);
+	t_lst *tmp;
+	int		i;
+
+	tmp = head->commands;
+	i = 0;
+	while (tmp)
+	{
+		if (tmp->val != 0)
+		{
+			if (tmp->val == 1)
+				printf("pa\n");
+			else if (tmp->val == 2)
+				printf("pb\n");
+			else if (tmp->val == 3)
+				printf("rra\n");
+			else if (tmp->val == 4)
+				printf("rrb\n");
+			else if (tmp->val == 5)
+				printf("sa\n");
+			else if (tmp->val == 6)
+				printf("sb\n");
+			else if (tmp->val == 7)
+				printf("ra\n");
+			else if (tmp->val == 8)
+				printf("rb\n");
+			else if (tmp->val == 9)
+				printf("rrr\n");
+			else if (tmp->val == 10)
+				printf("ss\n");
+			else if (tmp->val == 11)
+				printf("rr\n");
+			i++;
+		}
+		tmp = tmp->next;
+	}
+	// printf("<%d> [%ld] -> %d\n", head->comand_counter, get_lst_len(head->commands), i);
+	
 	return (0);
 }

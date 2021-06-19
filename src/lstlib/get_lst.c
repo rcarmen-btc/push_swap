@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/11 12:15:06 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/19 23:14:36 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ t_lst	*get_nth(t_lst *head, int n)
 
 t_lst	*get_last(t_lst *head)
 {
-	if (head == NULL)
+	t_lst *tmp;
+
+	tmp = head;
+	if (tmp == NULL)
 		return (NULL);
-	while (head->next)
-		head = head->next;
-	return (head);
+	while (tmp->next)
+		tmp = tmp->next;
+	return (tmp);
 }
 
 t_lst	*get_sec_to_last(t_lst *head)

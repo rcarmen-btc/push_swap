@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/06/17 05:40:29 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/06/19 23:58:56 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,13 @@ QSORT_ARR_SRC_DIR = src/qsort_arr
 QSORT_STACKS_SRC = init_stack_a.c
 QSORT_STACKS_SRC_DIR = src/qsort_stacks
 
+OUT_SRC = optimize_command_count.c
+OUT_SRC_DIR = src/output_optimize
+
 LIBFT = src/libft/libft.a
 
 ALL_SRC = $(addprefix $(SRC_DIR)/, $(SRC)) \
+	$(addprefix $(OUT_SRC_DIR)/, $(OUT_SRC)) \
 	$(addprefix $(LST_SRC_DIR)/, $(LST_SRC)) \
 	$(addprefix $(OPER_SRC_DIR)/, $(OPER_SRC)) \
 	$(addprefix $(QSORT_ARR_SRC_DIR)/, $(QSORT_ARR_SRC)) \

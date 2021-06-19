@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/17 05:22:45 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/19 23:56:49 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_head
 {
 	t_lst		*a;
 	t_lst		*b;
+	t_lst		*commands;
+	int			*arr_commands;
 	int			next;
 	int			mid;
 	int			flag;
@@ -71,4 +73,9 @@ void	set_order(t_head head);
  * 
  */
 void	_print_stacks_and_arr(t_head head);
+
+/*
+ * 
+ */
+int	optimize_command_count(t_head *head);
 #endif
