@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/19 23:56:49 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/20 14:37:09 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,3 +79,5 @@ void	_print_stacks_and_arr(t_head head);
  */
 int	optimize_command_count(t_head *head);
 #endif
+
+int	checking_for_sorting_a(t_head *head);

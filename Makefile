@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/06/19 23:58:56 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/06/20 13:58:57 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,3 +66,31 @@ nclean:
 	rm -f push_swap
 
 re: nclean all
+
+t500:
+	@echo ""
+	@ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; \
+	echo $$ARG ; ./push_swap $$ARG | ./checker_linux $$ARG; sleep 1; echo ""; \
+	echo "The size of the list of instructions: "; ./push_swap $$ARG | wc -l;
+	@echo ""
+
+t100:
+	@echo ""
+	@ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; \
+	echo $$ARG ; ./push_swap $$ARG | ./checker_linux $$ARG; sleep 1; echo ""; \
+	echo "The size of the list of instructions: "; ./push_swap $$ARG | wc -l
+	@echo ""
+
+t5:
+	@echo ""
+	@ARG=`ruby -e "puts (1..5).to_a.shuffle.join(' ')"`; \
+	echo $$ARG ; ./push_swap $$ARG | ./checker_linux $$ARG; sleep 1; echo ""; \
+	echo "The size of the list of instructions: "; ./push_swap $$ARG | wc -l
+	@echo ""
+
+t3:
+	@echo ""
+	@ARG=`ruby -e "puts (1..3).to_a.shuffle.join(' ')"`; \
+	echo $$ARG ; ./push_swap $$ARG | ./checker_linux $$ARG; sleep 1; echo ""; \
+	echo "The size of the list of instructions: "; ./push_swap $$ARG | wc -l
+	@echo ""

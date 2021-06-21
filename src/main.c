@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/20 00:56:06 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/20 16:50:58 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,13 @@ int	main(int ac, char **av)
 	get_sorted_arr(head);
 	set_order(*head);
 	init_main_struct(head);
-	// _print_stacks_and_arr(*head);
-	// printf("=====================================\n");
-	// printf("=====================================\n");
+	_print_stacks_and_arr(*head);
+	printf("=====================================\n");
+	printf("=====================================\n");
 	// printf("=====================================\n");
 	qsort_stack_loop(head);
-	optimize_command_count(head);
+	if (get_lst_len(head->a) > 5)
+		optimize_command_count(head);
 	t_lst *tmp;
 	int		i;
 
@@ -108,7 +109,7 @@ int	main(int ac, char **av)
 		}
 		tmp = tmp->next;
 	}
-	// printf("<%d> [%ld] -> %d\n", head->comand_counter, get_lst_len(head->commands), i);
+	printf("<%d> [%ld] -> %d\n", head->comand_counter, get_lst_len(head->commands), i);
 	
 	return (0);
 }
