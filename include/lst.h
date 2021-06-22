@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/13 16:23:45 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/22 15:08:05 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ typedef struct s_lst
 	int				val;
 	int				order;
 	int				flag;
+	int				rrx;
+	int				rx;
 	struct s_lst	*next;
 }					t_lst;
 

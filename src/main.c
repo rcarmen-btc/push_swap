@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/20 16:50:58 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/22 20:52:14 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	_print_stacks_and_arr(t_head head)
 	int	i;
 
 	printf("%s\n", "PRINT A");
-	printf("|%-7s|%-7s|%-7s|\n", "val:", "order:", "flag:");
+	printf("==== next: %d ==== mid: %d ==== max: %d ====\n", head.next, head.mid, head.max);
+	printf("|%-7s|%-7s|%-7s|%-7s|%-7s|\n", "rx:", "val:", "order:", "flag:", "rrx:");//=====///////0000
 	printf("-------------------------\n");
 	while (head.a)
 	{
-		printf("|%-7d|%-7d|%-7d|\n", head.a->val, head.a->order, head.a->flag);
+		printf("|%-7d|%-7d|%-7d|%-7d|%-7d|\n", head.a->rx, head.a->val, head.a->order, head.a->flag, head.a->rrx);
 		head.a = head.a->next;
 	}
 	printf("\n");
