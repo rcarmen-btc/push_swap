@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/22 23:14:35 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/23 02:31:44 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,25 @@ void	set_rrx_or_rx(t_head *head)
 	}
 }
 
+void	set_rrx_or_rx_b(t_head *head)
+{
+	t_lst *tmp;
+	int		len;
+	int		i;
+
+	tmp = head->b;
+	len = get_lst_len(tmp);
+	i = 0;
+	while (tmp)
+	{
+		tmp->rrx = len - i;
+		tmp->rx = i;
+		i++;
+		// printf("%d-\n", tmp->rx);
+		tmp = tmp->next;
+	}
+}
+
 int	choise_bw_rrx_and_rx(t_head *head)
 {
 	t_lst	*tmp;
@@ -193,6 +212,32 @@ int	choise_bw_rrx_and_rx(t_head *head)
 		if (tmp->flag == 0 && tmp->order <= head->mid && tmp->rx < min_rx)
 			min_rx = tmp->rx;
 		if (tmp->flag == 0 && tmp->order <= head->mid && tmp->rrx < min_rrx)
+			min_rrx = tmp->rrx;
+		tmp = tmp->next;
+	}
+	if (min_rrx != 0 && min_rx != 0)
+	{
+		if (min_rx < min_rrx)
+			return (1);
+		return (2);
+	}
+	return (3);
+}
+
+int	choise_bw_rrx_and_rx_b(t_head *head)
+{
+	t_lst	*tmp;
+	int		min_rx;
+	int		min_rrx;
+
+	tmp = head->b;
+	min_rx = get_lst_len(tmp) + 1;
+	min_rrx = get_lst_len(tmp) + 1;
+	while (tmp)
+	{
+		if (tmp->flag == 0 && tmp->order >= head->mid && tmp->rx < min_rx)
+			min_rx = tmp->rx;
+		if (tmp->flag == 0 && tmp->order >= head->mid && tmp->rrx < min_rrx)
 			min_rrx = tmp->rrx;
 		tmp = tmp->next;
 	}
@@ -319,6 +364,7 @@ void	first_phase_a_small_half_to_b(t_head *head)
 					head->next++;
 				rra(&head);
 			}
+			// ra(&head);
 		}
 	}
 }
@@ -373,8 +419,6 @@ void	second_phase_b_greatest_half_to_a(t_head *head)
 	// 	sort_three_el_a(head);
 	// 	return ;
 	// }
-	head->max = get_max_order(head->b);
-	head->mid = (head->max - head->next) / 2 + head->next;
 	while (head->b)
 	{
 		printf("LL\n");
@@ -385,8 +429,6 @@ void	second_phase_b_greatest_half_to_a(t_head *head)
 		{
 			printf("LL\n");
 			_print_stacks_and_arr(*head);
-			// head->max = get_max_order(head->b);
-			// head->mid = (head->max - head->next) / 2 + head->next;
 			if (head->b->order == head->next)
 			{
 				head->b->flag++;
@@ -400,13 +442,19 @@ void	second_phase_b_greatest_half_to_a(t_head *head)
 				pa(&head);
 			}
 			else
-				rb(&head);
-			while (head->a->order != 0 && head->a->order == head->next)
 			{
-				head->next++;
-				head->a->flag++;
-				ra(&head);
+				set_rrx_or_rx_b(head);
+				if (choise_bw_rrx_and_rx_b(head) == 1)
+					rb(&head);
+				else if (choise_bw_rrx_and_rx_b(head) == 2)
+					rrb(&head);
 			}
+			// while (head->a->order != 0 && head->a->order == head->next)
+			// {
+			// 	head->next++;
+			// 	head->a->flag++;
+			// 	ra(&head);
+			// }
 
 		}
 		if (get_lst_len(head->b) == 1)
@@ -511,20 +559,20 @@ void	qsort_stack_loop(t_head *head)
 				_print_stacks_and_arr(*head);
 				// exit(1);
 			}
-			// while (head->a->order == head->next)
-			// {
-			// 	head->next++;
-			// 	ra(&head);
-			// 	_print_stacks_and_arr(*head);
-			// }
-			// // _print_stacks_and_arr(*head);
-			// if (checking_for_sorting_a(head))
-			// {
-			// 	// printf("===============+END+==============\n");
-			// 	// printf("===============+SECOND+==============\n");
-			// 	// printf("===============+END+==============\n");
-			// 	return ;
-			// }
+			while (head->a->order == head->next)
+			{
+				head->next++;
+				ra(&head);
+				_print_stacks_and_arr(*head);
+			}
+			// _print_stacks_and_arr(*head);
+			if (checking_for_sorting_a(head))
+			{
+				// printf("===============+END+==============\n");
+				// printf("===============+SECOND+==============\n");
+				// printf("===============+END+==============\n");
+				return ;
+			}
 		}
 		
 		// =====wow
