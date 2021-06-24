@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/13 16:28:43 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/23 16:10:04 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,37 @@ void	get_sorted_arr(t_head *head)
 		i++;
 	}
 	qsort_arr(&head->sorted_arr, 0, i - 1);
+}
+
+int	find_el_with_order(t_lst *head, int order)
+{
+	while (head)
+	{
+		if (order == head->order)
+			return (head->val);
+		head = head->next;
+	}
+	return (-1);
+}
+
+void	set_order(t_head head)
+{
+	int	i;
+	int	len;
+
+	len = get_lst_len(head.a);	
+	while (head.a)
+	{
+		i = 0;
+		while (i < len)
+		{
+			if (head.a->val == head.sorted_arr[i])
+			{
+				head.a->order = i + 1;
+				break ;
+			}
+			i++;
+		}
+		head.a = head.a->next;
+	}
 }

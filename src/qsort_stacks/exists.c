@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst.h                                              :+:      :+:    :+:   */
+/*   exists.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/23 19:39:02 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/24 02:53:22 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LST_H
-# define LST_H
+#include "main.h"
 
-typedef struct s_lst
+int	exists_smaller_or_eq_mid_a(t_head *head)
 {
-	int				val;
-	int				order;
-	int				flag;
-	int				rrx;
-	int				rx;
-	struct s_lst	*next;
-}					t_lst;
+	t_lst	*tmp;
 
-void	push(t_lst **head, int val);
-int		pop(t_lst **head);
-t_lst	*get_nth(t_lst *head, int n);
-t_lst	*get_last(t_lst *head);
-void	push_back(t_lst **head, int val);
-t_lst	*get_sec_to_last(t_lst *head);
-size_t	get_lst_len(t_lst *head);
+	tmp = head->a;
+	while (tmp)
+	{
+		if ((tmp->order <= head->mid || tmp->order == head->next) && tmp->flag == 0)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
 
-#endif
+int	exists_grater_or_eq_mid_b(t_head *head)
+{
+	t_lst	*tmp;
+
+	tmp = head->b;
+	while (tmp)
+	{
+		if (tmp->order >= head->mid || tmp->order == head->next)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}

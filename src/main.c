@@ -6,31 +6,33 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/20 16:50:58 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/24 03:13:35 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	_print_stacks_and_arr(t_head head)
+void _print_stacks_and_arr(t_head head)
 {
-	int	i;
+	int i;
 
 	printf("%s\n", "PRINT A");
-	printf("|%-7s|%-7s|%-7s|\n", "val:", "order:", "flag:");
-	printf("-------------------------\n");
+	printf("==== next: %d ==== mid: %d ==== max: %d ====\n", head.next, head.mid, head.max);
+	printf("|%-7s|%-7s|%-7s|%-7s|%-7s|\n", "rx:", "val:", "order:", "rrx:", "flag:"); //=====///////0000
+	printf("-----------------------------------------\n");
 	while (head.a)
 	{
-		printf("|%-7d|%-7d|%-7d|\n", head.a->val, head.a->order, head.a->flag);
+		printf("|%-7d|%-7d|%-7d|%-7d|%-7d|\n", head.a->rx, head.a->val, head.a->order, head.a->rrx, head.a->flag);
 		head.a = head.a->next;
 	}
 	printf("\n");
 	printf("%s\n", "PRINT B");
-	printf("|%-7s|%-7s|%-7s|\n", "val:", "order:", "flag:");
-	printf("-------------------------\n");
+	printf("|%-7s|%-7s|%-7s|%-7s|%-7s|\n", "rx:", "val:", "order:", "rrx:", "flag:"); //=====///////0000
+	printf("----------------------------------------\n");
 	while (head.b)
 	{
-		printf("|%-7d|%-7d|%-7d|\n", head.b->val, head.b->order, head.b->flag);
+		printf("|%-7d|%-7d|%-7d|%-7d|%-7d|\n", head.b->rx, head.b->val, head.b->order, head.b->rrx, head.b->flag);
+		// printf("|%-7d|%-7d|%-7d|\n", head.b->val, head.b->order, head.b->flag);
 		head.b = head.b->next;
 	}
 	printf("\n");
@@ -38,45 +40,46 @@ void	_print_stacks_and_arr(t_head head)
 	printf("\n");
 }
 
-void	init_main_struct(t_head *head)
+
+void	init(t_head *head)
 {
+	head->a = NULL;
+	head->b = NULL;
+	head->commands = NULL;
 	head->flag = 0;
 	head->max = 0;
 	head->mid = 0;
 	head->next = 0;
 }
 
-void	test(t_head *head)
+void	parse(int ac, char **av, t_head *head)
 {
-	// _print_stacks_and_arr(*head);
-	ra(&head);
-	// _print_stacks_and_arr(*head);
+	while (ac - 1 > 0)
+	{
+		push(&head->a, ft_atoi(*(av + (ac - 1))));
+		head->a->flag = 0;
+		ac--;
+	}
 }
 
 int	main(int ac, char **av)
 {
 	t_head	*head;
+	t_lst	*tmp;
+	int		i;
 
-	head = (t_head *)malloc(sizeof(t_head));
-	head->a = NULL;
-	head->b = NULL;
-	head->commands = NULL;
 	if (ac < 3)
 		return (write(2, "Error\n", 6) - 5);
+	head = (t_head *)malloc(sizeof(t_head));
+	init(head);
 	parse(ac, av, head);
 	get_sorted_arr(head);
 	set_order(*head);
-	init_main_struct(head);
-	_print_stacks_and_arr(*head);
-	printf("=====================================\n");
-	printf("=====================================\n");
-	// printf("=====================================\n");
+	// _print_stacks_and_arr(*head);
+	// printf("=================START====================\n");
 	qsort_stack_loop(head);
 	if (get_lst_len(head->a) > 5)
 		optimize_command_count(head);
-	t_lst *tmp;
-	int		i;
-
 	tmp = head->commands;
 	i = 0;
 	while (tmp)
@@ -109,7 +112,7 @@ int	main(int ac, char **av)
 		}
 		tmp = tmp->next;
 	}
+	// _print_stacks_and_arr(*head);
 	printf("<%d> [%ld] -> %d\n", head->comand_counter, get_lst_len(head->commands), i);
-	
 	return (0);
 }

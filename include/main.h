@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/20 14:37:09 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/23 16:14:58 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,15 @@ int	optimize_command_count(t_head *head);
 #endif
 
 int	checking_for_sorting_a(t_head *head);
+
+int		find_el_with_order(t_lst *head, int order);
+void	set_order(t_head head);
+
+int		check_zeros_in_the_end(t_head  *head);
+int		check_zero_or_greater_cycle(t_head *head);
+int		checking_for_sorting_b(t_head *head);
+int		checking_for_sorting_a(t_head *head);
+void	sort_three_el_a(t_head *head);
+void	sort_three_el_b(t_head *head);
+int		exists_smaller_or_eq_mid_a(t_head *head);
+int		exists_grater_or_eq_mid_b(t_head *head);
