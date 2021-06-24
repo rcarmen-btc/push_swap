@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/06/24 05:17:13 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/06/24 06:41:14 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,22 +24,14 @@ LST_SRC_DIR = src/lstlib
 OPER_SRC = sr.c rrp.c sr_off.c rrp_off.c
 OPER_SRC_DIR = src/operations
 
-QSORT_ARR_SRC = qsort_arr.c
-QSORT_ARR_SRC_DIR = src/qsort_arr
-
-QSORT_STACKS_SRC = qsort_stack_loop.c sort_five_or_less.c checking.c exists.c
-QSORT_STACKS_SRC_DIR = src/qsort_stack
-
-OUT_SRC = optimize_command_count.c
-OUT_SRC_DIR = src/output_optimize
+QSORT_STACKS_SRC = optimize_command_count.c qsort_stack_loop.c sort_five_or_less.c checking.c exists.c set_and_choise.c  qsort_arr.c
+QSORT_STACKS_SRC_DIR = src/qsort
 
 LIBFT = src/libft/libft.a
 
 ALL_SRC = $(addprefix $(SRC_DIR)/, $(SRC)) \
-	$(addprefix $(OUT_SRC_DIR)/, $(OUT_SRC)) \
 	$(addprefix $(LST_SRC_DIR)/, $(LST_SRC)) \
 	$(addprefix $(OPER_SRC_DIR)/, $(OPER_SRC)) \
-	$(addprefix $(QSORT_ARR_SRC_DIR)/, $(QSORT_ARR_SRC)) \
 	$(addprefix $(QSORT_STACKS_SRC_DIR)/, $(QSORT_STACKS_SRC))
 
 

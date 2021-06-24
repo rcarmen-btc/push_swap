@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/24 05:09:14 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/24 07:13:08 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,104 +27,6 @@ int	get_max_order(t_lst *head)
 	return (max);
 }
 
-void	set_rrx_or_rx_a(t_head *head)
-{
-	t_lst	*tmp;
-	int		len;
-	int		i;
-
-	tmp = head->a;
-	len = get_lst_len(tmp);
-	i = 0;
-	while (tmp)
-	{
-		tmp->rrx = len - i;
-		tmp->rx = i;
-		i++;
-		tmp = tmp->next;
-	}
-}
-
-void	set_rrx_or_rx_b(t_head *head)
-{
-	t_lst	*tmp;
-	int		len;
-	int		i;
-
-	tmp = head->b;
-	len = get_lst_len(tmp);
-	i = 0;
-	while (tmp)
-	{
-		tmp->rrx = len - i;
-		tmp->rx = i;
-		i++;
-		tmp = tmp->next;
-	}
-}
-
-int	choise_bw_rrx_and_rx_a(t_head *head)
-{
-	t_lst	*tmp;
-	int		min_rx;
-	int		min_rrx;
-
-	tmp = head->a;
-	min_rx = get_lst_len(tmp) + 1;
-	min_rrx = get_lst_len(tmp) + 1;
-	while (tmp)
-	{
-		if (tmp->flag == 0 && tmp->order <= head->mid && tmp->rx < min_rx)
-			min_rx = tmp->rx;
-		if (tmp->flag == 0 && tmp->order <= head->mid && tmp->rrx < min_rrx)
-			min_rrx = tmp->rrx;
-		tmp = tmp->next;
-	}
-	if (min_rrx != 0 && min_rx != 0)
-	{
-		if (min_rx < min_rrx)
-			return (1);
-		return (2);
-	}
-	return (3);
-}
-
-int	choise_bw_rrx_and_rx_b(t_head *head)
-{
-	t_lst	*tmp;
-	int		min_rx;
-	int		min_rrx;
-
-	tmp = head->b;
-	min_rx = get_lst_len(tmp) + 1;
-	min_rrx = get_lst_len(tmp) + 1;
-	while (tmp)
-	{
-		if (exists_smaller_or_eq_mid_a(head))
-		{
-			if (tmp->order >= head->mid && tmp->rx < min_rx)
-				min_rx = tmp->rx;
-			if (tmp->order >= head->mid && tmp->rrx < min_rrx)
-				min_rrx = tmp->rrx;
-		}
-		else
-		{
-			if (tmp->order == head->next && tmp->rx < min_rx)
-				min_rx = tmp->rx;
-			if (tmp->order == head->next && tmp->rrx < min_rrx)
-				min_rrx = tmp->rrx;
-		}
-		tmp = tmp->next;
-	}
-	if (min_rrx != 0 && min_rx != 0)
-	{
-		if (min_rx < min_rrx)
-			return (1);
-		return (2);
-	}
-	return (3);
-}
-
 void	first_phase_a_small_half_to_b(t_head *head)
 {
 	head->max = get_max_order(head->a);
@@ -138,7 +40,8 @@ void	first_phase_a_small_half_to_b(t_head *head)
 			set_rrx_or_rx_a(head);
 			if (choise_bw_rrx_and_rx_a(head) == 1)
 				ra(&head);
-			else if (choise_bw_rrx_and_rx_a(head) == 2 && get_last(head->a)->order != head->next - 1)
+			else if (choise_bw_rrx_and_rx_a(head) == 2
+				&& get_last(head->a)->order != head->next - 1)
 				rra(&head);
 		}
 	}
@@ -148,7 +51,8 @@ void	second_phase_b_greatest_half_to_a(t_head *head)
 {
 	int	zero_order;
 
-	while (check_zero_or_greater_cycle(head) == 1 && get_last(head->a)->flag == 0)
+	while (check_zero_or_greater_cycle(head) == 1
+		&& get_last(head->a)->flag == 0)
 	{
 		rra(&head);
 		if (head->b->order != head->next)
@@ -158,8 +62,6 @@ void	second_phase_b_greatest_half_to_a(t_head *head)
 	head->mid = (head->max - head->next) / 2 + head->next;
 	while (exists_grater_or_eq_mid_b(head))
 	{
-		
-		_print_stacks_and_arr(*head);
 		if (head->b->order == head->next)
 		{
 			head->b->flag++;

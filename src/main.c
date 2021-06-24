@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/24 05:19:41 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/24 05:46:36 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,39 +76,7 @@ int	main(int ac, char **av)
 	get_sorted_arr(head);
 	set_order(*head);
 	qsort_stack_loop(head);
-	if (get_lst_len(head->a) > 5)
-		optimize_command_count(head);
-	tmp = head->commands;
-	i = 0;
-	while (tmp)
-	{
-		if (tmp->val != 0)
-		{
-			if (tmp->val == 1)
-				printf("pa\n");
-			else if (tmp->val == 2)
-				printf("pb\n");
-			else if (tmp->val == 3)
-				printf("rra\n");
-			else if (tmp->val == 4)
-				printf("rrb\n");
-			else if (tmp->val == 5)
-				printf("sa\n");
-			else if (tmp->val == 6)
-				printf("sb\n");
-			else if (tmp->val == 7)
-				printf("ra\n");
-			else if (tmp->val == 8)
-				printf("rb\n");
-			else if (tmp->val == 9)
-				printf("rrr\n");
-			else if (tmp->val == 10)
-				printf("ss\n");
-			else if (tmp->val == 11)
-				printf("rr\n");
-			i++;
-		}
-		tmp = tmp->next;
-	}
+	optimize_command_count(head);
+	print_optimized_commands(head);
 	return (0);
 }

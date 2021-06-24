@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/23 16:10:04 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/24 07:04:41 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	set_order(t_head head)
 	int	i;
 	int	len;
 
-	len = get_lst_len(head.a);	
+	len = get_lst_len(head.a);
 	while (head.a)
 	{
 		i = 0;

@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/23 16:14:58 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/24 06:09:46 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,12 @@ void	set_order(t_head head);
 /*
  * 
  */
+int	choise_bw_rrx_and_rx_a(t_head *head);
+int	choise_bw_rrx_and_rx_b(t_head *head);
+
 void	_print_stacks_and_arr(t_head head);
 
+void	print_optimized_commands(t_head *head);
 /*
  * 
  */
@@ -93,3 +97,5 @@ void	sort_three_el_a(t_head *head);
 void	sort_three_el_b(t_head *head);
 int		exists_smaller_or_eq_mid_a(t_head *head);
 int		exists_grater_or_eq_mid_b(t_head *head);
+void	set_rrx_or_rx_a(t_head *head);
+void	set_rrx_or_rx_b(t_head *head);

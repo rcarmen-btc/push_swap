@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/24 03:10:17 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/24 07:03:43 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	check_zero_or_greater_cycle(t_head *head)
 	return (0);
 }
 
-int	check_zeros_in_the_end(t_head  *head)
+int	check_zeros_in_the_end(t_head *head)
 {
 	t_lst	*tmp;
 	int		i;
