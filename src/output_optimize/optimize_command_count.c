@@ -40,4 +40,4 @@ int	optimize_command_count(t_head *head)
 		second_prt = second_prt->next;
 	}
 }
-		
+

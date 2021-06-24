@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/06/23 16:17:28 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/06/24 05:17:13 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ QSORT_ARR_SRC = qsort_arr.c
 QSORT_ARR_SRC_DIR = src/qsort_arr
 
 QSORT_STACKS_SRC = qsort_stack_loop.c sort_five_or_less.c checking.c exists.c
-QSORT_STACKS_SRC_DIR = src/qsort_stacks
+QSORT_STACKS_SRC_DIR = src/qsort_stack
 
 OUT_SRC = optimize_command_count.c
 OUT_SRC_DIR = src/output_optimize
