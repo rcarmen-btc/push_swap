@@ -6,40 +6,11 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/25 13:13:41 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/25 16:16:47 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-
-void _print_stacks_and_arr(t_head head)
-{
-	int i;
-
-	printf("%s\n", "PRINT A");
-	printf("==== next: %d ==== mid: %d ==== max: %d ====\n", head.next, head.mid, head.max);
-	printf("|%-7s|%-7s|%-7s|%-7s|%-7s|\n", "rx:", "val:", "order:", "rrx:", "flag:"); //=====///////0000
-	printf("-----------------------------------------\n");
-	while (head.a)
-	{
-		printf("|%-7d|%-7d|%-7d|%-7d|%-7d|\n", head.a->rx, head.a->val, head.a->order, head.a->rrx, head.a->flag);
-		head.a = head.a->next;
-	}
-	printf("\n");
-	printf("%s\n", "PRINT B");
-	printf("|%-7s|%-7s|%-7s|%-7s|%-7s|\n", "rx:", "val:", "order:", "rrx:", "flag:"); //=====///////0000
-	printf("----------------------------------------\n");
-	while (head.b)
-	{
-		printf("|%-7d|%-7d|%-7d|%-7d|%-7d|\n", head.b->rx, head.b->val, head.b->order, head.b->rrx, head.b->flag);
-		// printf("|%-7d|%-7d|%-7d|\n", head.b->val, head.b->order, head.b->flag);
-		head.b = head.b->next;
-	}
-	printf("\n");
-	printf("======================================\n");
-	printf("\n");
-}
-
 
 void	init(t_head **head)
 {
@@ -51,32 +22,6 @@ void	init(t_head **head)
 	(*head)->max = 0;
 	(*head)->mid = 0;
 	(*head)->next = 0;
-}
-
-void	check_input(char *num, t_head *head)
-{
-	int	i;
-
-	i = 0;
-	while (num[i])
-	{
-		if (i == 0 && (num[i] != '-' && !ft_isdigit(num[i])))
-		{
-			write(0, "Error\n", 6);
-			free_and_exit(head, 5);
-		}
-		else if (i == 0 && num[i] == '-' && !ft_isdigit(num[i + 1]))
-		{
-			write(0, "Error\n", 6);
-			free_and_exit(head, 5);
-		}
-		else if (i != 0 && !ft_isdigit(num[i]))
-		{
-			write(0, "Error\n", 6);
-			free_and_exit(head, 5);
-		}
-		i++;
-	}
 }
 
 long long	ft_atoi_long_long(const char *np)
@@ -96,18 +41,9 @@ long long	ft_atoi_long_long(const char *np)
 	return (res * sign);
 }
 
-void	check_max_int(char *num, t_head *head)
-{
-	if (ft_atoi_long_long(num) > 2147483647 || ft_atoi_long_long(num) < -2147483648)
-	{
-		write(0, "Error\n", 6);
-		free_and_exit(head, 5);
-	}
-}
-
 void	parse(int ac, char **av, t_head *head)
 {
-	int i;
+	int	i;
 
 	i = ac - 1;
 	while (i > 0)
@@ -136,33 +72,6 @@ int	free_and_exit(t_head *head, int i)
 		free(head);
 	}
 	exit(1);
-}
-
-void	check_dup(t_lst *lsthead, t_head *head)
-{
-	t_lst	*tmp1;
-	t_lst	*tmp2;
-	int		eq;
-
-	tmp1 = lsthead;
-	while (tmp1)
-	{
-		eq = 0;
-		tmp2 = lsthead;
-		while (tmp2)
-		{
-			if (tmp1->val == tmp2->val)	
-				eq++;
-			tmp2 = tmp2->next;
-		}
-		if (eq > 1)
-		{
-			write(0, "Error\n", 6);
-			free_and_exit(head, 4);
-		}
-		tmp1 = tmp1->next;
-	}
-	
 }
 
 int	main(int ac, char **av)

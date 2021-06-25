@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/06/25 13:13:37 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/06/25 17:45:33 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LST_SRC_DIR = src/lstlib
 OPER_SRC = sr.c rrp.c sr_off.c rrp_off.c
 OPER_SRC_DIR = src/operations
 
-QSORT_STACKS_SRC = optimize_command_count.c qsort_stack_loop.c checking.c exists.c set_and_choise.c  qsort_arr.c second_phase.c special_cases.c
+QSORT_STACKS_SRC = optimize_command_count.c qsort_stack_loop.c checking_helper.c checking.c exists.c set_and_choise.c  qsort_arr.c second_phase.c special_cases.c special_cases_helper.c
 QSORT_STACKS_SRC_DIR = src/qsort
 
 LIBFT = src/libft/libft.a

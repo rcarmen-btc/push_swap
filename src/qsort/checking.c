@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/24 07:03:43 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/25 16:18:02 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,30 @@ int	check_zeros_in_the_end(t_head *head)
 		tmp = tmp->next;
 	}
 	return (0);
+}
+
+void	check_dup(t_lst *lsthead, t_head *head)
+{
+	t_lst	*tmp1;
+	t_lst	*tmp2;
+	int		eq;
+
+	tmp1 = lsthead;
+	while (tmp1)
+	{
+		eq = 0;
+		tmp2 = lsthead;
+		while (tmp2)
+		{
+			if (tmp1->val == tmp2->val)
+				eq++;
+			tmp2 = tmp2->next;
+		}
+		if (eq > 1)
+		{
+			write(0, "Error\n", 6);
+			free_and_exit(head, 4);
+		}
+		tmp1 = tmp1->next;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/19 23:11:55 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/25 13:17:04 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	push_back(t_lst **head, int val)
 	tmp = (t_lst *)malloc(sizeof(t_lst));
 	tmp->val = val;
 	tmp->next = NULL;
-	
 	if (*head == NULL)
 		*head = tmp;
 	else

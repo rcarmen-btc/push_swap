@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/19 23:14:36 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/25 13:17:51 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_lst	*get_nth(t_lst *head, int n)
 
 t_lst	*get_last(t_lst *head)
 {
-	t_lst *tmp;
+	t_lst	*tmp;
 
 	tmp = head;
 	if (tmp == NULL)

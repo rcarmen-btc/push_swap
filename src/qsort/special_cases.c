@@ -6,112 +6,11 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/24 21:26:02 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/25 17:14:08 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-
-int	checking_for_sorting_a_without_arr(t_head *head)
-{
-	t_lst	*tmp;
-	int		i;
-
-	tmp = head->a;
-	i = tmp->order;
-	tmp = tmp->next;
-	while (tmp)
-	{
-		if (tmp->order > i)
-		{
-			i = tmp->order;
-			tmp = tmp->next;
-		}
-		else
-			return (0);
-	}
-	return (1);
-}
-
-void	sort_three_el_a(t_head *head)
-{
-	if (checking_for_sorting_a_without_arr(head))
-		return ;
-	sa_off(&head);
-	if (checking_for_sorting_a_without_arr(head))
-	{
-		sa_off(&head);
-		sa(&head);
-		return ;
-	}
-	else
-		sa_off(&head);
-	sa_off(&head);
-	rra_off(&head);
-	if (checking_for_sorting_a_without_arr(head))
-	{
-		ra_off(&head);
-		sa_off(&head);
-		sa(&head);
-		rra(&head);
-		return ;
-	}
-	else
-	{
-		ra_off(&head);
-		sa_off(&head);
-	}
-	ra_off(&head);
-	if (checking_for_sorting_a_without_arr(head))
-	{
-		rra_off(&head);
-		ra(&head);
-		return ;
-	}
-	else
-		rra_off(&head);
-	sa_off(&head);
-	ra_off(&head);
-	if (checking_for_sorting_a_without_arr(head))
-	{
-		rra_off(&head);
-		sa_off(&head);
-		sa(&head);
-		ra(&head);
-		return ;
-	}
-	else
-	{
-		rra_off(&head);
-		sa_off(&head);
-	}
-	rra_off(&head);
-	if (checking_for_sorting_a_without_arr(head))
-	{
-		ra_off(&head);
-		rra(&head);
-		return ;
-	}
-	else
-		ra_off(&head);
-}
-
-int		find_min(t_lst *head)
-{
-	int		min;
-	t_lst	*tmp;
-
-	tmp = head;
-	min = tmp->order;
-	tmp = tmp->next;
-	while (tmp)
-	{
-		if (tmp->order < min)		
-			min = tmp->order;
-		tmp = tmp->next;
-	}
-	return (min);
-}
 
 int	choise_bw_rrx_and_rx_for_less(t_head *head, int min)
 {
