@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/24 02:37:33 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/24 22:57:30 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	pa(t_head **head)
 	(*head)->b = (*head)->b->next;
 	tmp->next = (*head)->a;
 	(*head)->a = tmp;
-	// printf("pa\n");
-	// _print_stacks_and_arr(**head);
 }
 
 void	pb(t_head **head)
@@ -36,8 +34,6 @@ void	pb(t_head **head)
 	(*head)->a = (*head)->a->next;
 	tmp->next = (*head)->b;
 	(*head)->b = tmp;
-	// printf("pb\n");
-	// _print_stacks_and_arr(**head);
 }
 
 void	rra(t_head **head)
@@ -50,8 +46,6 @@ void	rra(t_head **head)
 	get_last((*head)->a)->next = (*head)->a;
 	(*head)->a = tmp->next;
 	tmp->next = NULL;
-	// printf("rra\n");
-	// _print_stacks_and_arr(**head);
 }
 
 void	rrb(t_head **head)
@@ -64,6 +58,4 @@ void	rrb(t_head **head)
 	get_last((*head)->b)->next = (*head)->b;
 	(*head)->b = tmp->next;
 	tmp->next = NULL;
-	// printf("rrb\n");
-	// _print_stacks_and_arr(**head);
 }

@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/06/24 06:41:14 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/06/25 01:48:35 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,13 @@ INC = include/lst.h include/main.h src/libft/inc/libft.h
 SRC = main.c
 SRC_DIR = src
 
-LST_SRC = get_lst.c pop_lst.c push_lst.c
+LST_SRC = get_lst.c pop_lst.c push_lst.c del_lst.c
 LST_SRC_DIR = src/lstlib
 
 OPER_SRC = sr.c rrp.c sr_off.c rrp_off.c
 OPER_SRC_DIR = src/operations
 
-QSORT_STACKS_SRC = optimize_command_count.c qsort_stack_loop.c sort_five_or_less.c checking.c exists.c set_and_choise.c  qsort_arr.c
+QSORT_STACKS_SRC = optimize_command_count.c qsort_stack_loop.c checking.c exists.c set_and_choise.c  qsort_arr.c second_phase.c special_cases.c
 QSORT_STACKS_SRC_DIR = src/qsort
 
 LIBFT = src/libft/libft.a

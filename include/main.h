@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/24 06:09:46 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/25 02:32:41 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	*qsort_iter(int **arr, int middle, int *left, int *right);
 /*
  * 
  */
-void	qsort_stack_loop(t_head *head);
+int		qsort_stack_loop(t_head *head);
 int		find_el_with_order(t_lst *head, int order);
 void	set_order(t_head head);
 
@@ -75,14 +75,15 @@ void	set_order(t_head head);
 int	choise_bw_rrx_and_rx_a(t_head *head);
 int	choise_bw_rrx_and_rx_b(t_head *head);
 
+int	free_and_exit(t_head *head, int i);
 void	_print_stacks_and_arr(t_head head);
 
+void	del_lst(t_lst *head);
 void	print_optimized_commands(t_head *head);
 /*
  * 
  */
 int	optimize_command_count(t_head *head);
-#endif
 
 int	checking_for_sorting_a(t_head *head);
 
@@ -99,3 +100,12 @@ int		exists_smaller_or_eq_mid_a(t_head *head);
 int		exists_grater_or_eq_mid_b(t_head *head);
 void	set_rrx_or_rx_a(t_head *head);
 void	set_rrx_or_rx_b(t_head *head);
+void	second_phase_b_greatest_half_to_a(t_head *head);
+int		get_max_order(t_lst *head);
+
+void	sort_three_el_a(t_head *head);
+void	sort_four_el_a(t_head *head);
+int		sort_five_or_less_count_a(t_head *head);
+void	sort_five_el_a(t_head *head);
+
+#endif
