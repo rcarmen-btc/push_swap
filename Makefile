@@ -59,30 +59,3 @@ nclean:
 
 re: nclean all
 
-t500:
-	@echo ""
-	@ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; \
-	echo $$ARG ; ./push_swap $$ARG | ./checker_linux $$ARG; sleep 1; echo ""; \
-	echo "The size of the list of instructions: "; ./push_swap $$ARG | wc -l;
-	@echo ""
-
-t100:
-	@echo ""
-	@ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; \
-	echo $$ARG ; ./push_swap $$ARG | ./checker_linux $$ARG; sleep 1; echo ""; \
-	echo "The size of the list of instructions: "; ./push_swap $$ARG | wc -l
-	@echo ""
-
-t5:
-	@echo ""
-	@ARG=`ruby -e "puts (1..5).to_a.shuffle.join(' ')"`; \
-	echo $$ARG ; ./push_swap $$ARG | ./checker_linux $$ARG; sleep 1; echo ""; \
-	echo "The size of the list of instructions: "; ./push_swap $$ARG | wc -l
-	@echo ""
-
-t3:
-	@echo ""
-	@ARG=`ruby -e "puts (1..3).to_a.shuffle.join(' ')"`; \
-	echo $$ARG ; ./push_swap $$ARG | ./checker_linux $$ARG; sleep 1; echo ""; \
-	echo "The size of the list of instructions: "; ./push_swap $$ARG | wc -l
-	@echo ""
