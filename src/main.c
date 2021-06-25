@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/25 03:05:57 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/25 11:55:21 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,50 @@ void	check_input(char *num, t_head *head)
 	int	i;
 
 	i = 0;
-	while (num[i] != 0)
+	while (num[i])
 	{
-		if (num[i] != '-' && !ft_isdigit(num[i]))
+		if (i == 0 && (num[i] != '-' && !ft_isdigit(num[i])))
 		{
 			write(0, "Error\n", 6);
-			free_and_exit(head, 2);
+			free_and_exit(head, 5);
+		}
+		else if (i == 0 && num[i] == '-' && !ft_isdigit(num[i + 1]))
+		{
+			write(0, "Error\n", 6);
+			free_and_exit(head, 5);
+		}
+		else if (i != 0 && !ft_isdigit(num[i]))
+		{
+			write(0, "Error\n", 6);
+			free_and_exit(head, 5);
 		}
 		i++;
+	}
+}
+
+long long	ft_atoi_long_long(const char *np)
+{
+	int					sign;
+	long				res;
+
+	sign = 1;
+	res = 0;
+	while (ft_isspace(*np))
+		np++;
+	if (*np == '-' || *np == '+')
+		if (*np++ == '-')
+			sign = -1;
+	while (ft_isdigit(*np))
+		res = (res * 10) + (*np++ - '0');
+	return (res * sign);
+}
+
+void	check_max_int(char *num, t_head *head)
+{
+	if (ft_atoi_long_long(num) > 2147483647 || ft_atoi_long_long(num) < -2147483648)
+	{
+		write(0, "Error\n", 6);
+		free_and_exit(head, 5);
 	}
 }
 
@@ -77,6 +113,7 @@ void	parse(int ac, char **av, t_head *head)
 	while (i > 0)
 	{
 		check_input(*(av + i), head);
+		check_max_int(*(av + i), head);
 		push(&head->a, ft_atoi(*(av + i)));
 		head->a->flag = 0;
 		i--;
@@ -108,10 +145,10 @@ void	check_dup(t_lst *lsthead, t_head *head)
 	int		eq;
 
 	tmp1 = lsthead;
-	tmp2 = lsthead;
-	eq = 0;
 	while (tmp1)
 	{
+		eq = 0;
+		tmp2 = lsthead;
 		while (tmp2)
 		{
 			if (tmp1->val == tmp2->val)	
