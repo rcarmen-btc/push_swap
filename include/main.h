@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/25 02:32:41 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/25 13:16:08 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ typedef struct s_head
 	int			*sorted_arr;
 	int			comand_counter;
 }				t_head;
-
-/*
- * 
- */
 void	sa(t_head **head);
 void	sb(t_head **head);
 void	ra(t_head **head);
@@ -45,7 +41,6 @@ void	pa(t_head **head);
 void	pb(t_head **head);
 void	rra(t_head **head);
 void	rrb(t_head **head);
-
 void	sa_off(t_head **head);
 void	sb_off(t_head **head);
 void	ra_off(t_head **head);
@@ -54,42 +49,23 @@ void	pa_off(t_head **head);
 void	pb_off(t_head **head);
 void	rra_off(t_head **head);
 void	rrb_off(t_head **head);
-/*
- * 
- */
 void	parse(int ac, char **av, t_head *head);
 void	get_sorted_arr(t_head *head);
 void	*qsort_arr(int **arr, int first, int last);
 void	*qsort_iter(int **arr, int middle, int *left, int *right);
-
-/*
- * 
- */
 int		qsort_stack_loop(t_head *head);
 int		find_el_with_order(t_lst *head, int order);
 void	set_order(t_head head);
-
-/*
- * 
- */
-int	choise_bw_rrx_and_rx_a(t_head *head);
-int	choise_bw_rrx_and_rx_b(t_head *head);
-
-int	free_and_exit(t_head *head, int i);
+int		choise_bw_rrx_and_rx_a(t_head *head);
+int		choise_bw_rrx_and_rx_b(t_head *head);
+int		free_and_exit(t_head *head, int i);
 void	_print_stacks_and_arr(t_head head);
-
 void	del_lst(t_lst *head);
 void	print_optimized_commands(t_head *head);
-/*
- * 
- */
-int	optimize_command_count(t_head *head);
-
-int	checking_for_sorting_a(t_head *head);
-
+int		optimize_command_count(t_head *head);
+int		checking_for_sorting_a(t_head *head);
 int		find_el_with_order(t_lst *head, int order);
 void	set_order(t_head head);
-
 int		check_zeros_in_the_end(t_head  *head);
 int		check_zero_or_greater_cycle(t_head *head);
 int		checking_for_sorting_b(t_head *head);
@@ -102,10 +78,8 @@ void	set_rrx_or_rx_a(t_head *head);
 void	set_rrx_or_rx_b(t_head *head);
 void	second_phase_b_greatest_half_to_a(t_head *head);
 int		get_max_order(t_lst *head);
-
 void	sort_three_el_a(t_head *head);
 void	sort_four_el_a(t_head *head);
 int		sort_five_or_less_count_a(t_head *head);
 void	sort_five_el_a(t_head *head);
-
 #endif
