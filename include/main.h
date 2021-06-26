@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/25 17:52:24 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/26 07:29:16 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void		rra_off(t_head **head);
 void		rrb_off(t_head **head);
 void		parse(int ac, char **av, t_head *head);
 void		get_sorted_arr(t_head *head);
-void		*qsort_arr(int **arr, int first, int last);
-void		*qsort_iter(int **arr, int middle, int *left, int *right);
+void		qsort_arr(int **arr, int first, int last);
+void		qsort_iter(int **arr, int middle, int *left, int *right);
 int			qsort_stack_loop(t_head *head);
 int			find_el_with_order(t_lst *head, int order);
 void		set_order(t_head head);

@@ -6,13 +6,13 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/25 02:55:37 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/26 07:29:30 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	*qsort_iter(int **arr, int middle, int *left, int *right)
+void	qsort_iter(int **arr, int middle, int *left, int *right)
 {
 	while ((*arr)[*left] < middle)
 		(*left)++;
@@ -20,7 +20,7 @@ void	*qsort_iter(int **arr, int middle, int *left, int *right)
 		(*right)--;
 }
 
-void	*qsort_arr(int **arr, int first, int last)
+void	qsort_arr(int **arr, int first, int last)
 {
 	int	left;
 	int	right;

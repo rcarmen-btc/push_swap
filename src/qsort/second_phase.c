@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/25 13:18:34 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/26 07:25:58 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	second_phase_heler_while(t_head *head)
 
 void	second_phase_b_greatest_half_to_a(t_head *head)
 {
-	int	zero_order;
-
 	while (check_zero_or_greater_cycle(head) == 1
 		&& get_last(head->a)->flag == 0)
 	{

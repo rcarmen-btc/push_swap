@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/25 02:56:07 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/26 07:25:38 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ void	pre_third_phase(t_head *head)
 
 int	qsort_stack_loop(t_head *head)
 {
-	int	save;
-
 	head->next = 1;
 	head->flag = 0;
 	if (!checking_for_sorting_a(head) && get_lst_len(head->a) <= 5)
@@ -109,4 +107,5 @@ int	qsort_stack_loop(t_head *head)
 			return (0);
 		pre_third_phase(head);
 	}
+	return (0);
 }

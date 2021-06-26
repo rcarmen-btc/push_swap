@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/25 16:16:47 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/26 07:23:49 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ int	free_and_exit(t_head *head, int i)
 int	main(int ac, char **av)
 {
 	t_head	*head;
-	t_lst	*tmp;
-	int		i;
 
 	init(&head);
 	parse(ac, av, head);

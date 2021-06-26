@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/25 16:18:02 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/26 07:24:56 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,11 @@ int	checking_for_sorting_a(t_head *head)
 int	checking_for_sorting_b(t_head *head)
 {
 	t_lst	*tmp;
-	int		len;
 	int		pre;
 	int		i;
 
 	pre = head->b->order;
 	tmp = head->b->next;
-	len = get_lst_len(head->b);
 	i = 0;
 	while (tmp)
 	{

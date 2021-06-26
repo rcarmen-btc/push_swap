@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/11 01:29:25 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/06/26 07:22:43 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdarg.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096
@@ -55,18 +54,6 @@ typedef enum e_flags
 	space = 0b00000100,
 	sharp = 0b00001000
 }				t_flags;
-
-typedef struct s_specs
-{
-	t_flags			flag;
-	int				width;
-	int				precision;
-	char			type;
-	va_list			f_varg;
-	const char		*f_str;
-	char			*point;
-	unsigned int	full_lenth;
-}					t_specs;
 
 typedef struct s_list
 {

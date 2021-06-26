@@ -1,4 +1,4 @@
-
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/06/25 17:45:33 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/06/26 07:21:31 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,9 @@ ALL_SRC = $(addprefix $(SRC_DIR)/, $(SRC)) \
 	$(addprefix $(QSORT_STACKS_SRC_DIR)/, $(QSORT_STACKS_SRC))
 
 
-OBJ = $(patsubst %.c, %.o, $(ALL_SRC))
-
 CC = gcc
 
-FLAGS = -g # -Wall -Werror -Wextra
+FLAGS = -g -Wall -Werror -Wextra
 
 all: $(NAME)
 

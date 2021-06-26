@@ -50,6 +50,7 @@ int	optimize_command_count(t_head *head)
 	second_prt = head->commands->next;
 	while (second_prt)
 		optimize_hepler(&first_prt, &second_prt);
+	return (0);
 }
 
 void	if_stuff(t_lst *tmp)
