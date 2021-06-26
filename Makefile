@@ -1,4 +1,4 @@
-# **************************************************************************** #
+
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -24,7 +24,12 @@ LST_SRC_DIR = src/lstlib
 OPER_SRC = sr.c rrp.c sr_off.c rrp_off.c
 OPER_SRC_DIR = src/operations
 
-QSORT_STACKS_SRC = optimize_command_count.c qsort_stack_loop.c checking_helper.c checking.c exists.c set_and_choise.c  qsort_arr.c second_phase.c special_cases.c special_cases_helper.c
+QSORT_STACKS_SRC = checking.c qsort_stack_loop.c \
+	checking_helper.c         second_phase.c \
+	exists.c                  set_and_choise.c \
+	optimize_command_count.c  special_cases.c \
+	qsort_arr.c               special_cases_helper.c
+
 QSORT_STACKS_SRC_DIR = src/qsort
 
 LIBFT = src/libft/libft.a
@@ -57,5 +62,5 @@ fclean:
 nclean:
 	rm -f push_swap
 
-re: nclean all
+re: fclean all
 
