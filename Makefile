@@ -6,16 +6,16 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/07/07 22:43:00 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/07/07 23:06:56 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 LIBFT = srcs/libft/libft.a
+CC = gcc
 
-INC = include/lst.h include/main.h srcs/libft/inc/libft.h
-INC_DIR = include srcs/libft/inc
+INC_DIR = srcs/libft/inc
 
 MAIN_SRCS = main.c
 MAIN_SRCS_DIR = srcs
@@ -36,21 +36,21 @@ QSORT_STACKS_SRCS_DIR = srcs/qsort
 SRCS = $(MAIN_SRCS) $(LST_SRCS) $(OPER_SRCS) $(QSORT_STACKS_SRCS)
 SRCS_DIRS = $(MAIN_SRCS_DIR) $(LST_SRCS_DIR) $(OPER_SRCS_DIR) $(QSORT_STACKS_SRCS_DIR)
 
+OBJS = $(patsubst %.c, %.o, $(SRCS))
+OBJS_DIR = objs
+
 PATH_TO_SRCS = $(addprefix $(MAIN_SRCS_DIR)/, $(MAIN_SRCS)) \
 	$(addprefix $(LST_SRCS_DIR)/, $(LST_SRCS)) \
 	$(addprefix $(OPER_SRCS_DIR)/, $(OPER_SRCS)) \
 	$(addprefix $(QSORT_STACKS_SRCS_DIR)/, $(QSORT_STACKS_SRCS))
 
-OBJ = $(patsubst %.c, %.o, $(SRCS))
-OBJ_DIR = obj
-
-CC = gcc
+PATH_TO_OBJS = $(addprefix $(OBJS_DIR)/, $(OBJS))
 
 FLAGS = -g -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(INC)
+$(NAME): $(PATH_TO_OBJS)
 	@$(MAKE) -C srcs/libft
 	echo $(OBJ)
 	$(CC) $^ @S
@@ -58,10 +58,11 @@ $(NAME): $(OBJ) $(INC)
 VPATH = $(SRCS_DIRS)
 
 %.o: %.c
-	gcc -c -MD $(addprefix -I, $(INC_DIR)) $(FLAGS) $<
+	gcc -c -MD $(addprefix -I, $(SRCS_DIRS)) $(FLAGS) -Ift $<
 
 clean:
 	$(MAKE) clean -C srcs/libft
+	rm -f *
 
 fclean:
 	$(MAKE) fclean -C srcs/libft
