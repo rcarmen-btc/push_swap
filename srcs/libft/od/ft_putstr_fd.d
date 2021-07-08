@@ -1,6 +1,5 @@
-../../src/libft/od/ft_putstr_fd.o: ../../src/libft/src/ft_putstr_fd.c \
- /usr/include/stdc-predef.h ../../src/libft/inc/libft.h \
- /usr/include/unistd.h /usr/include/features.h \
+od/ft_putstr_fd.o: src/ft_putstr_fd.c /usr/include/stdc-predef.h \
+ inc/libft.h /usr/include/unistd.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/long-double.h \

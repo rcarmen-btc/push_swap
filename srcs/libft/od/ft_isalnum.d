@@ -1,5 +1,4 @@
-../../src/libft/od/ft_isalnum.o: ../../src/libft/src/ft_isalnum.c \
- /usr/include/stdc-predef.h ../../src/libft/inc/libft.h \
+od/ft_isalnum.o: src/ft_isalnum.c /usr/include/stdc-predef.h inc/libft.h \
  /usr/include/unistd.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \

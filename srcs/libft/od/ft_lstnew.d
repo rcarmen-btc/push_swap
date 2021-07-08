@@ -1,5 +1,4 @@
-../../src/libft/od/ft_lstnew.o: ../../src/libft/src/ft_lstnew.c \
- /usr/include/stdc-predef.h ../../src/libft/inc/libft.h \
+od/ft_lstnew.o: src/ft_lstnew.c /usr/include/stdc-predef.h inc/libft.h \
  /usr/include/unistd.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \

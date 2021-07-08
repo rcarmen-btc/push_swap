@@ -1,7 +1,6 @@
-../../src/libft/od/ft_lstadd_front.o: \
- ../../src/libft/src/ft_lstadd_front.c /usr/include/stdc-predef.h \
- ../../src/libft/inc/libft.h /usr/include/unistd.h \
- /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+od/ft_lstadd_front.o: src/ft_lstadd_front.c /usr/include/stdc-predef.h \
+ inc/libft.h /usr/include/unistd.h /usr/include/features.h \
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/long-double.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \

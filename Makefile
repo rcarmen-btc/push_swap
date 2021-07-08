@@ -6,72 +6,67 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/07/07 23:06:56 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/07/08 22:44:06 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-LIBFT = srcs/libft/libft.a
+LIBS = -L./srcs/libft -lft
+
 CC = gcc
+FLAGS = -g -Wall -Werror -Wextra -pipe 
 
-INC_DIR = srcs/libft/inc
+INC_DIRS = inc/ srcs/libft/inc/
 
-MAIN_SRCS = main.c
-MAIN_SRCS_DIR = srcs
+SRCS =	checking.c         main.c                    qsort_stack_loop.c  special_cases.c\
+		checking_helper.c  optimize_command_count.c  rrp.c               special_cases_helper.c\
+		del_lst.c          pop_lst.c                 rrp_off.c           sr.c\
+		exists.c           push_lst.c                second_phase.c      sr_off.c\
+		get_lst.c          qsort_arr.c               set_and_choise.c
 
-LST_SRCS = get_lst.c pop_lst.c push_lst.c del_lst.c
-LST_SRCS_DIR = srcs/lstlib
-
-OPER_SRCS = sr.c rrp.c sr_off.c rrp_off.c
-OPER_SRCS_DIR = srcs/operations
-
-QSORT_STACKS_SRCS = checking.c qsort_stack_loop.c \
-	checking_helper.c         second_phase.c \
-	exists.c                  set_and_choise.c \
-	optimize_command_count.c  special_cases.c \
-	qsort_arr.c               special_cases_helper.c
-QSORT_STACKS_SRCS_DIR = srcs/qsort
-
-SRCS = $(MAIN_SRCS) $(LST_SRCS) $(OPER_SRCS) $(QSORT_STACKS_SRCS)
-SRCS_DIRS = $(MAIN_SRCS_DIR) $(LST_SRCS_DIR) $(OPER_SRCS_DIR) $(QSORT_STACKS_SRCS_DIR)
+SRCS_DIR = srcs/
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
-OBJS_DIR = objs
+OBJS_DIR = od/
 
-PATH_TO_SRCS = $(addprefix $(MAIN_SRCS_DIR)/, $(MAIN_SRCS)) \
-	$(addprefix $(LST_SRCS_DIR)/, $(LST_SRCS)) \
-	$(addprefix $(OPER_SRCS_DIR)/, $(OPER_SRCS)) \
-	$(addprefix $(QSORT_STACKS_SRCS_DIR)/, $(QSORT_STACKS_SRCS))
+PATH_TO_SRCS = $(addprefix $(SRCS_DIR), $(SRCS))
 
-PATH_TO_OBJS = $(addprefix $(OBJS_DIR)/, $(OBJS))
+PATH_TO_OBJS = $(addprefix $(OBJS_DIR), $(OBJS))
 
-FLAGS = -g -Wall -Werror -Wextra
+D_PATH = $(patsubst %.o, %.d, $(PATH_TO_OBJS))
 
-all: $(NAME)
+all: od $(NAME)
 
 $(NAME): $(PATH_TO_OBJS)
 	@$(MAKE) -C srcs/libft
-	echo $(OBJ)
-	$(CC) $^ @S
+	$(CC) $^ -o $(NAME) $(LIBS) 
 
-VPATH = $(SRCS_DIRS)
+include	$(wildcard $(D_PATH))
 
-%.o: %.c
-	gcc -c -MD $(addprefix -I, $(SRCS_DIRS)) $(FLAGS) -Ift $<
+VPATH = $(SRCS_DIR)
+
+$(OBJS_DIR)%.o: %.c $(INC_DIR)
+	gcc -c -MD $(FLAGS) $< -o $@ -MD $(addprefix -I, $(INC_DIRS))
+
+libft:
+	@$(MAKE) -C srcs/libft
+
+od:
+	mkdir -p od/
 
 clean:
-	$(MAKE) clean -C srcs/libft
-	rm -f *
+	@$(MAKE) clean -C srcs/libft
+	rm -rf od/
 
-fclean:
-	$(MAKE) fclean -C srcs/libft
-	rm -f push_swap
-
-nclean:
+fclean: clean
+	@$(MAKE) fclean -C srcs/libft
 	rm -f push_swap
 
 re: fclean all
 
-lol:
-	$(CC) $(FLAGS) $(ALL_SRCS) $(addprefix -I, $(INC_DIR)) $(LIBFT) -o $(NAME)
+.PHONY: all clean fclean re
+
+
+
+
