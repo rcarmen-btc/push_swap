@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/26 07:25:58 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/07/09 16:37:32 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	second_phase_helper(t_head *head)
 		else
 			rrb(&head);
 	}
+	// rb(&head);
 }
 
 void	second_phase_heler_while(t_head *head)

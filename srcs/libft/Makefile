@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/03 15:00:17 by rcarmen           #+#    #+#              #
-#    Updated: 2021/07/08 00:13:31 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/07/10 00:26:47 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJ_PATH = $(addprefix $(OBJ_DIR), $(OBJ))
 D_PATH = $(patsubst %.o, %.d, $(OBJ_PATH))
 
 CFLAGS = -Wall -Wextra -Werror
-OPT_FLUGS = -O -g3
+OPT_FLUGS = -O -g3 -pipe
 
 all: od $(NAME)
 
@@ -38,11 +38,13 @@ od:
 
 $(NAME): $(OBJ_PATH)
 	ar rcs $(NAME) $?
+	@echo "\033[90m[\033[32mSuccess\033[90m]\033[32mSuccessfully compiled libft\033[0m"
 
 VPATH = $(SRC_DIR)
 
 $(OBJ_DIR)%.o: %.c
 	gcc $(CFLAGS) $(OPT_FLUGS) -c $< -o $@ -MD -I$(INC_DIR)
+	@echo "\033[90m[\033[32mOK\033[90m]\033[33mCompiling $<\033[0m"
 
 include	$(wildcard $(D_PATH))
 

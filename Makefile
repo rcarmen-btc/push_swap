@@ -6,7 +6,7 @@
 #    By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#              #
-#    Updated: 2021/07/08 22:44:06 by rcarmen          ###   ########.fr        #
+#    Updated: 2021/07/10 00:34:32 by rcarmen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ all: od $(NAME)
 
 $(NAME): $(PATH_TO_OBJS)
 	@$(MAKE) -C srcs/libft
-	$(CC) $^ -o $(NAME) $(LIBS) 
+	$(CC) $^ -o $(NAME) $(LIBS)
+	@echo "\033[90m[\033[32mSuccess\033[90m]\033[32mSuccessfully compiled push_swap\033[0m"
 
 include	$(wildcard $(D_PATH))
 
@@ -48,9 +49,7 @@ VPATH = $(SRCS_DIR)
 
 $(OBJS_DIR)%.o: %.c $(INC_DIR)
 	gcc -c -MD $(FLAGS) $< -o $@ -MD $(addprefix -I, $(INC_DIRS))
-
-libft:
-	@$(MAKE) -C srcs/libft
+	@echo "\033[90m[\033[32mOK\033[90m]\033[33mCompiling $<\033[0m"
 
 od:
 	mkdir -p od/

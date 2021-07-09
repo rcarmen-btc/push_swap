@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/07/08 00:05:34 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/07/09 00:26:13 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int			sort_three_el_two(t_head *head);
 int			sort_three_el_three(t_head *head);
 void		sort_three_el_a(t_head *head);
 int			find_min(t_lst *head);
+void		second_phase_heler_while(t_head *head);
 int			sort_five_or_less_count_a(t_head *head);
 void		sort_five_el_a(t_head *head);
 void		check_input(char *num, t_head *head);

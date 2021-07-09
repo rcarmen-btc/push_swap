@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/06/26 07:25:38 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/07/09 16:38:19 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ void	first_phase_a_small_half_to_b(t_head *head)
 			pb(&head);
 		else
 		{
-			set_rrx_or_rx_a(head);
-			if (choise_bw_rrx_and_rx_a(head) == 1)
-				ra(&head);
-			else if (choise_bw_rrx_and_rx_a(head) == 2
-				&& get_last(head->a)->order != head->next - 1)
-				rra(&head);
+			// set_rrx_or_rx_a(head);
+			// if (choise_bw_rrx_and_rx_a(head) == 1)
+			// 	ra(&head);
+			// else if (choise_bw_rrx_and_rx_a(head) == 2
+			// 	&& get_last(head->a)->order != head->next - 1)
+			// 	rra(&head);
+			ra(&head);
 		}
 	}
 }

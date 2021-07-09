@@ -6,7 +6,7 @@
 /*   By: rcarmen <rcarmen@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:32:04 by rcarmen           #+#    #+#             */
-/*   Updated: 2021/07/08 00:12:50 by rcarmen          ###   ########.fr       */
+/*   Updated: 2021/07/09 18:36:36 by rcarmen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	init(t_head **head)
 {
 	*head = (t_head *)malloc(sizeof(t_head));
+	if (!head)
+		exit(1);
 	(*head)->a = NULL;
 	(*head)->b = NULL;
 	(*head)->commands = NULL;
@@ -71,7 +73,7 @@ int	free_and_exit(t_head *head, int i)
 		free(head->sorted_arr);
 		free(head);
 	}
-	exit(1);
+	exit(0);
 }
 
 int	main(int ac, char **av)
