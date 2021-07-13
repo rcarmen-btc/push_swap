@@ -39,7 +39,6 @@ void	second_phase_helper(t_head *head)
 		else
 			rrb(&head);
 	}
-	// rb(&head);
 }
 
 void	second_phase_heler_while(t_head *head)

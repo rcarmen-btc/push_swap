@@ -36,15 +36,7 @@ void	first_phase_a_small_half_to_b(t_head *head)
 		if (head->a->order <= head->mid)
 			pb(&head);
 		else
-		{
-			// set_rrx_or_rx_a(head);
-			// if (choise_bw_rrx_and_rx_a(head) == 1)
-			// 	ra(&head);
-			// else if (choise_bw_rrx_and_rx_a(head) == 2
-			// 	&& get_last(head->a)->order != head->next - 1)
-			// 	rra(&head);
 			ra(&head);
-		}
 	}
 }
 
